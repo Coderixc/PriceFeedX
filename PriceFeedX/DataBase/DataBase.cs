@@ -30,13 +30,36 @@ namespace CustomDataBase
         {
 
         }
-        //open connection to databse
+
+        public bool OpenConnection()
+        {
+            bool x = false;
+            try
+            {
+                Connection.Open();
+                return x;
+            }
+            catch (Exception ex)
+            {
+                return x;
+            }
+        }
+        //Check connection to databse
         public bool ISConnectionOpen()
         {
             try
             {
-                Connection.Open();
-                return true;
+                if(Connection.State.ToString() =="open")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                   
+
+
             }
             catch(MySqlException ex)
             {
