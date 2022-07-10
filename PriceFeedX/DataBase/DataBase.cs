@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using EquityStatistics;
+
 using MySql.Data;
 using System.Data;
 
-namespace EquityStatistics
+namespace CustomDataBase
 {
     public class DataBase
     {

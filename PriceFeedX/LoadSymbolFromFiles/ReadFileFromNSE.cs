@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using PriceFeedX.InsertSymbolToDB;
 
 using System.Data;
 namespace PriceFeedX.LoadSymbolFromFiles
@@ -126,22 +127,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
         #endregion
 
-
-
-        #region 
-        public void  Load_NSE_File_To_DataTable(ref DataTable dt)
-        {
-            try
-            {
-
-            }catch (Exception ex)
-            {
-               
-            }
-        }
-        #endregion
-
-        #region  
+        #region   Read NIFTY TOP 200 XX file And Load to Local Internal Structure
         public DataTable ReadTextfile( DataTable Dt_Input_With_ColoumName)
         {
             try
@@ -172,7 +158,6 @@ namespace PriceFeedX.LoadSymbolFromFiles
                 return Dt_Input_With_ColoumName;
             }
         }
-
         #endregion
 
         public bool STARTPROCESS()
@@ -182,11 +167,29 @@ namespace PriceFeedX.LoadSymbolFromFiles
                 DataTable DT_Result = new DataTable();
 
                 DT_Result = this.ReadTextfile(this.Dt_NSE_Symbol_File);
-                
+
+                this.InsertDt2DB(DT_Result);
+
                 return true;
             }
             catch (Exception ex)
             {
+                return false;
+            }
+        }
+
+
+        private bool InsertDt2DB(DataTable dt)
+        {
+            try
+            {
+                
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+
                 return false;
             }
         }

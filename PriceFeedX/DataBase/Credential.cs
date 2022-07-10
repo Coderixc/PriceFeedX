@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EquityStatistics
+namespace CustomDataBase
 {
     class Credential
     {
@@ -13,6 +13,8 @@ namespace EquityStatistics
         public static string mUser = @"root";
         public static string mPassword = @"123456";
         public static string mSchema = @"tradex_kite";
+
+        public static string mTable = @"pricedataprev";
 
     }
 }
