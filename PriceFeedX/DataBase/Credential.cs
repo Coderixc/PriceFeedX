@@ -12,7 +12,7 @@ namespace CustomDataBase
         public static string mHost = @"127.0.0.1";
         public static string mUser = @"root";
         public static string mPassword = @"123456";
-        public static string mSchema = @"tradex_kite";
+        public static string mSchema = @"pricedata";
 
         public static string mTable = @"pricedataprev";
 

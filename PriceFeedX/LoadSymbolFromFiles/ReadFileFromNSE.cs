@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using PriceFeedX.InsertSymbolToDB;
+
 
 using System.Data;
 namespace PriceFeedX.LoadSymbolFromFiles
@@ -53,6 +53,8 @@ namespace PriceFeedX.LoadSymbolFromFiles
     {
         string INPUTTFILE = null;
         DataTable Dt_NSE_Symbol_File;
+        InsertSymbolToDB _InsertSymbolToDB;
+        
 
         #region Create GUI Panel to load Textf file
         public ReadFileFromNSE_EQUITY( string inputCsvPath)
@@ -183,7 +185,44 @@ namespace PriceFeedX.LoadSymbolFromFiles
         {
             try
             {
-                
+                if(dt.Rows.Count ==0)
+                {
+                    return true;
+                }
+
+                string box_msg_y_n_c = "Do you want to enter new Symbol to DB?";
+
+                string box_title_y_n_c = "Confirmation Box";
+
+                //MessageBox.Show(box_msg_y_n_c, box_title_y_n_c, MessageBoxButtons.YesNoCancel;
+
+                DialogResult result = MessageBox.Show(box_msg_y_n_c, "caption", MessageBoxButtons.YesNoCancel);
+                if(result == DialogResult.Yes)
+                {
+                    try
+                    {
+
+
+                        var list = dt.Rows.OfType<DataRow>()
+                        .Select(dr => dr.Field<string>(NSE_TOP_XX_SYMBOLLIST.mSymbol)).ToList();
+
+                        _InsertSymbolToDB = new InsertSymbolToDB(list.ToList());
+
+                        _InsertSymbolToDB.PrepareInsertQuery();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("Error(s) Occured in Converting Datatable to List while inserting Symbol to DB.");
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+                    MessageBox.Show(" Symbol Not Inserted/Updated ");
+                }
+                else
+                {
+
+                }
 
                 return true;
             }

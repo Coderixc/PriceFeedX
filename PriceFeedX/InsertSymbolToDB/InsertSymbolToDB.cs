@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CustomDataBase;
 
 
-namespace PriceFeedX.InsertSymbolToDB
+namespace PriceFeedX
 {
     internal class InsertSymbolToDB
     {
@@ -27,8 +27,19 @@ namespace PriceFeedX.InsertSymbolToDB
         }
 
         #endregion
-        public bool PrepareInsertQuery()
+        public bool PrepareInsertQuery()  
         {
+            string ltp = "0.0";
+            string Class = "200";
+            string prev1 = "0.0";
+            string prev2 = "0.0";
+            string prev3 = "0.0";
+            string prev4 = "0.0";
+            string prev5 = "0.0";
+
+
+
+
             try
             {
                 string query = @" INSERT INTO `"+ Credential.mSchema+ @"`.`"  +Credential.mTable  +@"`
@@ -46,9 +57,20 @@ namespace PriceFeedX.InsertSymbolToDB
 
                 for(int i  = 0; i  < this.List_Symbol.Count;i++)
                 {
-                    insertquery_values += "'2' ," + this.List_Symbol[i].ToString() 
-                                            +"," +  ;
+                    insertquery_values += "('" +Class + "' ,"
+                                       +"'" +this.List_Symbol[i].ToString() + "',"
+                                       + ltp + ","
+                                       + prev1 + ","
+                                       + prev2 + ","
+                                       + prev3 + ","
+                                       + prev4 + ","
+                                        +prev5 + "),";
                 }
+                query += insertquery_values;
+
+                query = query.Remove(query.Length - 1);
+
+
 
                 return true;
             }
