@@ -34,8 +34,8 @@ namespace PriceFeedX.LoadSymbolFromFiles
     internal class NSE_TOP_XX_SYMBOLLIST
     {
 
-        public const string mCompany      = "Company";
-        public const string mName	      = "Name";
+        public const string mCompany      = "Company Name";
+        //public const string mName	      = "Name";
         public const string mIndustry	  = "Industry";
         public const string mSymbol	      = "Symbol";
         public const string mSeries	      = "Series";
@@ -57,7 +57,12 @@ namespace PriceFeedX.LoadSymbolFromFiles
         public ReadFileFromNSE_EQUITY( string inputCsvPath)
         {
             this.INPUTTFILE = inputCsvPath; 
-            this.Dt_NSE_Symbol_File = new DataTable();  
+            this.Dt_NSE_Symbol_File = new DataTable();
+
+
+            //Initilise all Necessary Method/Fuymction
+            this.Prepare_Datatable_Coloumn_Fraom_NIFTYLIST(ref this.Dt_NSE_Symbol_File);
+
         }
         #endregion
 
@@ -94,8 +99,6 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
         #endregion
 
-
-
         #region Prepare Datatable Shape with column name for Symbol name 
         private void Prepare_Datatable_Coloumn_Fraom_NIFTYLIST(ref DataTable dt)  //ind_nifty200list
         {
@@ -104,7 +107,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
                 this.Dt_NSE_Symbol_File.Columns.Clear();
 
                 this.Dt_NSE_Symbol_File.Columns.Add(NSE_TOP_XX_SYMBOLLIST.mCompany, typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_TOP_XX_SYMBOLLIST.mName, typeof(string));
+                //this.Dt_NSE_Symbol_File.Columns.Add(NSE_TOP_XX_SYMBOLLIST.mName, typeof(string));
                 this.Dt_NSE_Symbol_File.Columns.Add(NSE_TOP_XX_SYMBOLLIST.mIndustry, typeof(string));
                 this.Dt_NSE_Symbol_File.Columns.Add(NSE_TOP_XX_SYMBOLLIST.mSymbol, typeof(string));
                 this.Dt_NSE_Symbol_File.Columns.Add(NSE_TOP_XX_SYMBOLLIST.mSeries, typeof(string));
@@ -139,12 +142,12 @@ namespace PriceFeedX.LoadSymbolFromFiles
         #endregion
 
         #region  
-        private void ReadTextfile(DataTable Dt_Input_With_ColoumName)
+        public DataTable ReadTextfile( DataTable Dt_Input_With_ColoumName)
         {
             try
             {
                 if (this.INPUTTFILE == null)
-                    return;
+                    return  new DataTable();
 
                 //START TASK
                 
@@ -161,15 +164,32 @@ namespace PriceFeedX.LoadSymbolFromFiles
                     Dt_Input_With_ColoumName.Rows.Add(Row);
                 }
 
+                return Dt_Input_With_ColoumName;
 
             }
             catch(Exception ex)
             {
-
+                return Dt_Input_With_ColoumName;
             }
         }
 
         #endregion
+
+        public bool STARTPROCESS()
+        {
+            try
+            {
+                DataTable DT_Result = new DataTable();
+
+                DT_Result = this.ReadTextfile(this.Dt_NSE_Symbol_File);
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
 
     }
 }

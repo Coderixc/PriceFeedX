@@ -8,15 +8,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using PriceFeedX.LoadSymbolFromFiles;
 
 namespace PriceFeedX
 {
     public partial class Form1 : Form
     {
+        #region Declare Variable
+        private ReadFileFromNSE_EQUITY readFileFromNSE_EQUITY;
+
+        #endregion
+
+        #region Ctr
         public Form1()
         {
             InitializeComponent();
         }
+        #endregion
+
+        #region Load NSE TOP XX files
+        private void TaskProcess1(string path)
+        {
+            this.readFileFromNSE_EQUITY =new ReadFileFromNSE_EQUITY(path);
+            if(!this.readFileFromNSE_EQUITY.STARTPROCESS())
+            {
+                MessageBox.Show("Failed To load  file from csv");
+            }
+
+
+        }
+        #endregion
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -32,6 +55,11 @@ namespace PriceFeedX
                     string path  = ofd.FileName.ToString();
 
                     textBox1_Load_BhavCopy_NSE.Text = path;
+
+                    if(textBox1_Load_BhavCopy_NSE.Text !=null)
+                    {
+                        this.TaskProcess1(path);
+                    }
                     
                 }
             }
