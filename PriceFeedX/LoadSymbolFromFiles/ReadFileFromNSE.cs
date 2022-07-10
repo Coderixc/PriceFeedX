@@ -185,6 +185,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
         {
             try
             {
+                bool x = false;
                 if(dt.Rows.Count ==0)
                 {
                     return true;
@@ -208,7 +209,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
                         _InsertSymbolToDB = new InsertSymbolToDB(list.ToList());
 
-                        _InsertSymbolToDB.PrepareInsertQuery();
+                       x = _InsertSymbolToDB.PrepareInsertQuery();
                     }
                     catch(Exception ex)
                     {
@@ -224,7 +225,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
                 }
 
-                return true;
+                return x;
             }
             catch (Exception ex)
             {

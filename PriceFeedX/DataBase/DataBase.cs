@@ -35,7 +35,7 @@ namespace CustomDataBase
         {
             try
             {
-                Connection.OpenAsync();
+                Connection.Open();
                 return true;
             }
             catch(MySqlException ex)

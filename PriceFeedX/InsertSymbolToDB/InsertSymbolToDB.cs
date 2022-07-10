@@ -36,13 +36,9 @@ namespace PriceFeedX
             string prev3 = "0.0";
             string prev4 = "0.0";
             string prev5 = "0.0";
-
-
-
-
             try
             {
-                string query = @" INSERT INTO `"+ Credential.mSchema+ @"`.`"  +Credential.mTable  +@"`
+                string query = @" INSERT INTO `" + Credential.mSchema + @"`.`" + Credential.mTable + @"`
                                      (
                                      `Class`,
                                      `Symbol`,
@@ -55,24 +51,23 @@ namespace PriceFeedX
                   VALUES  ";
                 string insertquery_values = "";
 
-                for(int i  = 0; i  < this.List_Symbol.Count;i++)
+                for (int i = 0; i < this.List_Symbol.Count; i++)
                 {
-                    insertquery_values += "('" +Class + "' ,"
-                                       +"'" +this.List_Symbol[i].ToString() + "',"
+                    insertquery_values += "('" + Class + "' ,"
+                                       + "'" + this.List_Symbol[i].ToString() + "',"
                                        + ltp + ","
                                        + prev1 + ","
                                        + prev2 + ","
                                        + prev3 + ","
                                        + prev4 + ","
-                                        +prev5 + "),";
+                                        + prev5 + "),";
                 }
                 query += insertquery_values;
 
                 query = query.Remove(query.Length - 1);
 
-
-
-                return true;
+                return this.Insert_2_Db(query);
+            
             }
             catch (Exception ex)
             {
@@ -80,5 +75,21 @@ namespace PriceFeedX
             }
         }
 
+        public bool Insert_2_Db(string Query)
+        {
+            try
+            {
+                bool x = false;
+                if(_DataBase_user_1.ISConnectionOpen())
+                {
+                   x =  _DataBase_user_1.ExecuteNonQuery(Query);
+                }
+                return x; ;
+            }
+            catch {
+
+                return false;
+            }
+        }
     }
 }
