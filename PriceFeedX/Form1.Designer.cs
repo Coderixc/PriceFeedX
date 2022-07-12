@@ -32,12 +32,12 @@
             this.panel2_BHavCopyPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox1_BHAVCOPY_EQ = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3_LOAD_BHAVCOPY_TOPXX = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1_Load_BhavCopy_NSE = new System.Windows.Forms.TextBox();
+            this.textBox1_Nse_TOP_XX_LIST = new System.Windows.Forms.TextBox();
             this.Label_BHAVCOPYPATH = new System.Windows.Forms.Label();
             this.panel2_BHavCopyPanel.SuspendLayout();
             this.panel3_LOAD_BHAVCOPY_TOPXX.SuspendLayout();
@@ -57,7 +57,7 @@
             this.panel2_BHavCopyPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel2_BHavCopyPanel.Controls.Add(this.label3);
             this.panel2_BHavCopyPanel.Controls.Add(this.button2);
-            this.panel2_BHavCopyPanel.Controls.Add(this.textBox1);
+            this.panel2_BHavCopyPanel.Controls.Add(this.textBox1_BHAVCOPY_EQ);
             this.panel2_BHavCopyPanel.Controls.Add(this.label2);
             this.panel2_BHavCopyPanel.Location = new System.Drawing.Point(15, 476);
             this.panel2_BHavCopyPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -84,12 +84,12 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox1
+            // textBox1_BHAVCOPY_EQ
             // 
-            this.textBox1.Location = new System.Drawing.Point(201, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(724, 22);
-            this.textBox1.TabIndex = 1;
+            this.textBox1_BHAVCOPY_EQ.Location = new System.Drawing.Point(201, 34);
+            this.textBox1_BHAVCOPY_EQ.Name = "textBox1_BHAVCOPY_EQ";
+            this.textBox1_BHAVCOPY_EQ.Size = new System.Drawing.Size(724, 22);
+            this.textBox1_BHAVCOPY_EQ.TabIndex = 1;
             // 
             // label2
             // 
@@ -105,7 +105,7 @@
             this.panel3_LOAD_BHAVCOPY_TOPXX.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.label1);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.button1);
-            this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.textBox1_Load_BhavCopy_NSE);
+            this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.textBox1_Nse_TOP_XX_LIST);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.Label_BHAVCOPYPATH);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Location = new System.Drawing.Point(17, 574);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -135,13 +135,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1_Load_BhavCopy_NSE
+            // textBox1_Nse_TOP_XX_LIST
             // 
-            this.textBox1_Load_BhavCopy_NSE.Location = new System.Drawing.Point(197, 22);
-            this.textBox1_Load_BhavCopy_NSE.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1_Load_BhavCopy_NSE.Name = "textBox1_Load_BhavCopy_NSE";
-            this.textBox1_Load_BhavCopy_NSE.Size = new System.Drawing.Size(726, 22);
-            this.textBox1_Load_BhavCopy_NSE.TabIndex = 1;
+            this.textBox1_Nse_TOP_XX_LIST.Location = new System.Drawing.Point(197, 22);
+            this.textBox1_Nse_TOP_XX_LIST.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1_Nse_TOP_XX_LIST.Name = "textBox1_Nse_TOP_XX_LIST";
+            this.textBox1_Nse_TOP_XX_LIST.Size = new System.Drawing.Size(726, 22);
+            this.textBox1_Nse_TOP_XX_LIST.TabIndex = 1;
             // 
             // Label_BHAVCOPYPATH
             // 
@@ -179,11 +179,11 @@
         private System.Windows.Forms.Panel panel3_LOAD_BHAVCOPY_TOPXX;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1_Load_BhavCopy_NSE;
+        private System.Windows.Forms.TextBox textBox1_Nse_TOP_XX_LIST;
         private System.Windows.Forms.Label Label_BHAVCOPYPATH;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox1_BHAVCOPY_EQ;
         private System.Windows.Forms.Label label2;
     }
 }

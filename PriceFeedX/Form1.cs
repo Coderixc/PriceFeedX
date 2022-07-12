@@ -41,6 +41,21 @@ namespace PriceFeedX
 
 
 
+        #region Load NSE BHAV COPY FOR EQ
+        private void TaskProcess2(string path)
+        {
+            this.readFileFromNSE_EQUITY = new ReadFileFromNSE_EQUITY(path,"0",true);
+            if (!this.readFileFromNSE_EQUITY.STARTPROCESS())
+            {
+                MessageBox.Show("Failed To load  file from csv");
+            }
+
+
+        }
+        #endregion
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -54,9 +69,9 @@ namespace PriceFeedX
                     //StreamReader sr = new StreamReader(ofd.FileName);
                     string path  = ofd.FileName.ToString();
 
-                    textBox1_Load_BhavCopy_NSE.Text = path;
+                    textBox1_Nse_TOP_XX_LIST.Text = path;
 
-                    if(textBox1_Load_BhavCopy_NSE.Text !=null)
+                    if(textBox1_Nse_TOP_XX_LIST.Text !=null)
                     {
                         this.TaskProcess1(path);
                     }
@@ -65,7 +80,7 @@ namespace PriceFeedX
             }
             catch (Exception ex)
             {
-                textBox1_Load_BhavCopy_NSE.Text = "Failed to Load NSE TOP 200 list";
+                textBox1_Nse_TOP_XX_LIST.Text = "Failed to Load NSE TOP 200 list";
             }
         }
 
@@ -74,7 +89,7 @@ namespace PriceFeedX
             try
             {
                 OpenFileDialog ofd = new OpenFileDialog();
-                ofd.Title = "Read NSE Bhav COPY EQ ";
+                ofd.Title = "Read NSE Bhav Copy EQ ";
                 //ofd.Filter = "Text Files (*.csv) | *.csv | All Files(*.*) | *.*"; //Here you can filter which all files you wanted allow to open
                 DialogResult dr = ofd.ShowDialog();
                 if (dr == DialogResult.OK)
@@ -82,9 +97,9 @@ namespace PriceFeedX
                     //StreamReader sr = new StreamReader(ofd.FileName);
                     string path = ofd.FileName.ToString();
 
-                    textBox1_Load_BhavCopy_NSE.Text = path;
+                    textBox1_BHAVCOPY_EQ.Text = path;
 
-                    if (textBox1_Load_BhavCopy_NSE.Text != null)
+                    if (textBox1_Nse_TOP_XX_LIST.Text != null)
                     {
                         this.TaskProcess1(path);
                     }
@@ -93,7 +108,7 @@ namespace PriceFeedX
             }
             catch (Exception ex)
             {
-                textBox1_Load_BhavCopy_NSE.Text = "Failed to Load NSE TOP 200 list";
+                textBox1_Nse_TOP_XX_LIST.Text = "Failed to Load Bhav copy";
             }
 
         }

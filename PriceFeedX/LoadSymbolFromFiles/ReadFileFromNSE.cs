@@ -44,6 +44,10 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
 
     }
+
+
+   
+
     internal class ReadFileFromNSE_EQUITY
     {
         string INPUTTFILE = null;
@@ -52,9 +56,9 @@ namespace PriceFeedX.LoadSymbolFromFiles
         
 
         #region Create GUI Panel to load Textf file
-        public ReadFileFromNSE_EQUITY( string inputCsvPath)
+        public ReadFileFromNSE_EQUITY( string inputSymbolCsvPath)
         {
-            this.INPUTTFILE = inputCsvPath; 
+            this.INPUTTFILE = inputSymbolCsvPath; 
             this.Dt_NSE_Symbol_File = new DataTable();
 
 
@@ -63,6 +67,27 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
         }
         #endregion
+
+
+
+        #region Create GUI Panel to load BHAV COPY file
+        public ReadFileFromNSE_EQUITY(string inputBhavCopyCsvPath,String BHAVCOPY = "1/0 -- > Symbol/Bhavcopy", bool Bhavcopy = true)
+        {
+            if (Bhavcopy)
+            {
+
+
+                this.INPUTTFILE = inputBhavCopyCsvPath;
+                this.Dt_NSE_Symbol_File = new DataTable();
+
+
+                //Initilise all Necessary Method/Fuymction
+                this.Prepare_Datatable_Coloumn_FOR_BHAV_COPY(ref this.Dt_NSE_Symbol_File);
+            }
+
+        }
+        #endregion
+
 
         #region Prepare Datatable Shape with column name for EQ Bhv Copy
         private void Prepare_Datatable_Coloumn_FOR_BHAV_COPY(ref DataTable dt)
@@ -176,6 +201,26 @@ namespace PriceFeedX.LoadSymbolFromFiles
         }
 
 
+        public bool STARTPROCESS_BHAVCOPY()
+        {
+            try
+            {
+                DataTable DT_Result = new DataTable();
+
+                DT_Result = this.ReadTextfile(this.Dt_NSE_Symbol_File);
+
+                this.InsertDt2DB(DT_Result);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+
         private bool InsertDt2DB(DataTable dt)
         {
             try
@@ -228,6 +273,66 @@ namespace PriceFeedX.LoadSymbolFromFiles
                 return false;
             }
         }
+
+
+
+        #region Insert Bhav Copy Csv Files to Database
+
+        private bool InsertDt2DB_BhavCopy(DataTable dt)
+        {
+            try
+            {
+                bool x = false;
+                if (dt.Rows.Count == 0)
+                {
+                    return true;
+                }
+
+                string box_msg_y_n_c = "Do you want to enter new BhavCopy to DB?";
+
+                string box_title_y_n_c = "Confirmation Box";
+
+                //MessageBox.Show(box_msg_y_n_c, box_title_y_n_c, MessageBoxButtons.YesNoCancel;
+
+                DialogResult result = MessageBox.Show(box_msg_y_n_c, "caption", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+
+
+                        var list = dt.Rows.OfType<DataRow>()
+                        .Select(dr => dr.Field<string>(NSE_TOP_XX_SYMBOLLIST.mSymbol)).ToList();
+
+                        _InsertSymbolToDB = new InsertSymbolToDB(list.ToList());
+
+                        x = _InsertSymbolToDB.PrepareInsertQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error(s) Occured in Converting Datatable to List while inserting Symbol to DB.");
+                    }
+                }
+                else if (result == DialogResult.No)
+                {
+                    MessageBox.Show(" Symbol Not Inserted/Updated ");
+                }
+                else
+                {
+
+                }
+
+                return x;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+
+        #endregion
 
     }
 }

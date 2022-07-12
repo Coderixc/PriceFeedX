@@ -14,7 +14,9 @@ namespace CustomDataBase
         public static string mPassword = @"123456";
         public static string mSchema = @"pricedata";
 
-        public static string mTable = @"pricedataprev";
+        public const string mTable = @"pricedataprev";
+
+        public const string mTable_BhavCopyPrice = @"bhavcopyprice";
 
     }
 }
