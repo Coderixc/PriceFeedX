@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using PriceFeedX.InsertBhavCopyPriceToDB;
 
 
 using System.Data;
@@ -52,7 +53,9 @@ namespace PriceFeedX.LoadSymbolFromFiles
     {
         string INPUTTFILE = null;
         DataTable Dt_NSE_Symbol_File;
+        DataTable Dt_NSE_BHAV_COPY;
         InsertSymbolToDB _InsertSymbolToDB;
+        InsertBhavCopyPrice _InsertBhavCopyPriceToDB;   
         
 
         #region Create GUI Panel to load Textf file
@@ -78,7 +81,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
 
                 this.INPUTTFILE = inputBhavCopyCsvPath;
-                this.Dt_NSE_Symbol_File = new DataTable();
+                this.Dt_NSE_BHAV_COPY = new DataTable();
 
 
                 //Initilise all Necessary Method/Fuymction
@@ -94,21 +97,21 @@ namespace PriceFeedX.LoadSymbolFromFiles
         {
             try
             {
-               this.Dt_NSE_Symbol_File.Columns.Clear();
+               this.Dt_NSE_BHAV_COPY.Columns.Clear();
 
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mSYMBOL,typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mSERIES, typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mOPEN,typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mHIGH,typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mLOW,typeof(string));    
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mCLOSE,typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mLAST,typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mPREVCLOSE,typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mTOTTRDQTY,typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mTOTTRDVAL,typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mTIMESTAMP, typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mTOTALTRADES, typeof(string));
-                this.Dt_NSE_Symbol_File.Columns.Add(NSE_EQ_BHAVCOPY.mISIN, typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mSYMBOL,typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mSERIES, typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mOPEN,typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mHIGH,typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mLOW,typeof(string));    
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mCLOSE,typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mLAST,typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mPREVCLOSE,typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mTOTTRDQTY,typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mTOTTRDVAL,typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mTIMESTAMP, typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mTOTALTRADES, typeof(string));
+                this.Dt_NSE_BHAV_COPY.Columns.Add(NSE_EQ_BHAVCOPY.mISIN, typeof(string));
 
 
                 //dt = this.Dt_NSE_Symbol_File;
@@ -201,15 +204,15 @@ namespace PriceFeedX.LoadSymbolFromFiles
         }
 
 
-        public bool STARTPROCESS_BHAVCOPY()
+        public bool STARTPROCESS_BHAVCOPY(List<string> ListSymbol)
         {
             try
             {
                 DataTable DT_Result = new DataTable();
 
-                DT_Result = this.ReadTextfile(this.Dt_NSE_Symbol_File);
+                DT_Result = this.ReadTextfile(this.Dt_NSE_BHAV_COPY);
 
-                this.InsertDt2DB(DT_Result);
+                this.InsertDt2DB_BhavCopy(DT_Result,ListSymbol);
 
                 return true;
             }
@@ -278,7 +281,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
         #region Insert Bhav Copy Csv Files to Database
 
-        private bool InsertDt2DB_BhavCopy(DataTable dt)
+        private bool InsertDt2DB_BhavCopy(DataTable dt,List<string> ListSymbol)
         {
             try
             {
@@ -288,7 +291,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
                     return true;
                 }
 
-                string box_msg_y_n_c = "Do you want to enter new BhavCopy to DB?";
+                string box_msg_y_n_c = "Do you want to Insert new BhavCopy to DB?";
 
                 string box_title_y_n_c = "Confirmation Box";
 
@@ -301,12 +304,12 @@ namespace PriceFeedX.LoadSymbolFromFiles
                     {
 
 
-                        var list = dt.Rows.OfType<DataRow>()
-                        .Select(dr => dr.Field<string>(NSE_TOP_XX_SYMBOLLIST.mSymbol)).ToList();
+                        //var list = dt.Rows.OfType<DataRow>()
+                        //.Select(dr => dr.Field<string>(NSE_TOP_XX_SYMBOLLIST.mSymbol)).ToList();
 
-                        _InsertSymbolToDB = new InsertSymbolToDB(list.ToList());
+                        _InsertBhavCopyPriceToDB = new InsertBhavCopyPrice(dt, ListSymbol);
 
-                        x = _InsertSymbolToDB.PrepareInsertQuery();
+                        x = _InsertBhavCopyPriceToDB.PrepareInsertQuery();
                     }
                     catch (Exception ex)
                     {

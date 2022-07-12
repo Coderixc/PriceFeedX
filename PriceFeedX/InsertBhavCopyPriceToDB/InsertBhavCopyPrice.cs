@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CustomDataBase;
+using System.Data;
+using System.Windows.Forms;
 
 namespace PriceFeedX.InsertBhavCopyPriceToDB
 {
@@ -25,6 +27,11 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
         public const string mTOTALTRADES = @"TOTALTRADES";
 
 
+        //not required
+        public const string mSERIES= @"SERIES";
+
+
+
 
     }
 
@@ -32,14 +39,22 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
     {
         #region Declare Variable
         private DataBase _DataBase_user_1;
+        private DataTable dt_Bhav_copy;
+        private List<string> List_Symbol;
 
 
         #endregion
 
         #region ctor
 
-        public InsertBhavCopyPrice()
+        public InsertBhavCopyPrice(DataTable dt,List<string> List_Symbol)
         {
+            this._DataBase_user_1 = new DataBase();
+            this.dt_Bhav_copy = new DataTable();
+            this.dt_Bhav_copy = dt;
+
+            this.List_Symbol = new List<string>();
+            this.List_Symbol = List_Symbol;
 
         }
 
@@ -49,28 +64,6 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
         {
 
             _DataBase_user_1.OpenConnection();
-
-            //Validate Symbol before inserting to Db
-
-            //List<string> ListDb = new List<string>();
-            //this.validate_1_Read_DB(ref ListDb);
-            //List<string> ListTOENter = this.validate_2_Match_both_list(ListDb, List_Symbol);
-
-
-            //if (ListTOENter.Count == 0)
-            //{
-            //    MessageBox.Show("No ");
-            //    return true;
-            //}
-
-
-            string ltp = "0.0";
-            string Class = "200";
-            string prev1 = "0.0";
-            string prev2 = "0.0";
-            string prev3 = "0.0";
-            string prev4 = "0.0";
-            string prev5 = "0.0";
 
             string _ID             =@"0";
             string _Symbol         =@"0";
@@ -91,21 +84,33 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
                                     `"+TABLE_NSE_BHAVCOPY.mCLOSE       +@"`,
                                     `"+TABLE_NSE_BHAVCOPY.mTOTTRDQTY   +@"`,
                                     `"+TABLE_NSE_BHAVCOPY.mTOTTRDVAL   +@"`,
-                                    "+TABLE_NSE_BHAVCOPY.mTOTALTRADES + @"`
+                                    `"+TABLE_NSE_BHAVCOPY.mTOTALTRADES + @"`
                                      )
                                     VALUES  ";
                 string insertquery_values = "";
 
-                for (int i = 0; i < ListTOENter.Count; i++)
+                for (int i = 0; i < this.dt_Bhav_copy.Rows.Count; i++)
                 {
-                    insertquery_values += "('" + Class + "' ,"
-                                       + "'" + this.List_Symbol[i].ToString() + "',"
-                                       + ltp + ","
-                                       + prev1 + ","
-                                       + prev2 + ","
-                                       + prev3 + ","
-                                       + prev4 + ","
-                                        + prev5 + "),";
+                    if (this.List_Symbol.Contains(this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mSymbol].ToString()))
+                    {
+                        string _series = string.Empty;
+
+                        _series = this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mSERIES].ToString();
+                        if (_series == "EQ")
+                        {
+
+                            insertquery_values += "("
+                                               + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mSymbol].ToString() + "',"
+                                               + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mTIMESTAMP].ToString() + "',"
+                                               + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mCLOSE].ToString() + "',"
+                                               + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mTOTTRDQTY].ToString() + "',"
+                                               + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mTOTTRDVAL].ToString() + "',"
+                                               + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mTOTALTRADES].ToString() + "') ,";
+
+
+                        }
+                    }
+
                 }
                 query += insertquery_values;
 
@@ -119,6 +124,31 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
                 return false;
             }
         }
+
+        #region Finally after all Calculation , Entering symbols to Table with some default values
+        public bool Insert_2_Db(string Query)
+        {
+            try
+            {
+
+
+                bool x = false;
+                if (_DataBase_user_1.ISConnectionOpen())
+                {
+                    x = _DataBase_user_1.ExecuteNonQuery(Query);
+                    if (x)
+                        MessageBox.Show("Trades inserted");
+
+                }
+                return x; ;
+            }
+            catch
+            {
+
+                return false;
+            }
+        }
+        #endregion
 
     }
 }

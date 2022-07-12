@@ -49,7 +49,7 @@ namespace CustomDataBase
         {
             try
             {
-                if(Connection.State.ToString() =="open")
+                if(Connection.State.ToString() =="Open")
                 {
                     return true;
                 }

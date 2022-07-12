@@ -57,7 +57,7 @@ namespace PriceFeedX
             string prev5 = "0.0";
             try
             {
-                string query = @" INSERT INTO `" + Credential.mSchema + @"`.`" + Credential.mTable + @"`
+                string query = @" INSERT INTO `" + Credential.mSchema + @"`.`" + Credential.mTable_Symbol + @"`
                                      (
                                      `Class`,
                                      `Symbol`,
@@ -124,7 +124,7 @@ namespace PriceFeedX
             bool x = false;
             try
             {
-                string query = @"SELECT Symbol FROM `" + Credential.mSchema + @"`.`" + Credential.mTable + @" order by Symbol";
+                string query = @"SELECT Symbol FROM `" + Credential.mSchema + @"`.`" + Credential.mTable_Symbol + @" order by Symbol";
                 DataTable dt = new DataTable();
 
                 if(_DataBase_user_1.ISConnectionOpen())
