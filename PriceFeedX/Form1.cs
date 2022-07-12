@@ -68,5 +68,40 @@ namespace PriceFeedX
                 textBox1_Load_BhavCopy_NSE.Text = "Failed to Load NSE TOP 200 list";
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Title = "Read NSE Bhav COPY EQ ";
+                //ofd.Filter = "Text Files (*.csv) | *.csv | All Files(*.*) | *.*"; //Here you can filter which all files you wanted allow to open
+                DialogResult dr = ofd.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    //StreamReader sr = new StreamReader(ofd.FileName);
+                    string path = ofd.FileName.ToString();
+
+                    textBox1_Load_BhavCopy_NSE.Text = path;
+
+                    if (textBox1_Load_BhavCopy_NSE.Text != null)
+                    {
+                        this.TaskProcess1(path);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                textBox1_Load_BhavCopy_NSE.Text = "Failed to Load NSE TOP 200 list";
+            }
+
+        }
+
+
+
+
+        //Create Txt files, to record last update
+
     }
 }

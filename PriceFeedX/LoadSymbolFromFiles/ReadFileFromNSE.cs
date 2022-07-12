@@ -44,11 +44,6 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
 
     }
-
-
-
-
-
     internal class ReadFileFromNSE_EQUITY
     {
         string INPUTTFILE = null;
