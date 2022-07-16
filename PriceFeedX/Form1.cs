@@ -82,9 +82,7 @@ namespace PriceFeedX
                 this.List_Symbol = list;
                 
 
-                string List5days =string.Join(",", this.List_Symbol.ToArray());
 
-                this.label6_Last5PrevPrice.Text += List5days;
 
             }
             catch (Exception ex)
@@ -122,7 +120,11 @@ namespace PriceFeedX
 
                 var list = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<string>(NSE_EQ_BHAVCOPY.mTIMESTAMP)).ToList();
 
-                this.List_Symbol = list;
+                this.List_BhavCopy_Prev5 = list;
+
+                string List5days = string.Join(",", this.List_BhavCopy_Prev5.ToArray());
+
+                this.label6_Last5PrevPrice.Text += List5days;
 
             }
             catch (Exception ex)
