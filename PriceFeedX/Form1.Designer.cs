@@ -42,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6_Last5PrevPrice = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2_BHavCopyPanel.SuspendLayout();
             this.panel3_LOAD_BHAVCOPY_TOPXX.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -50,6 +51,7 @@
             // panel2_BHavCopyPanel
             // 
             this.panel2_BHavCopyPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel2_BHavCopyPanel.Controls.Add(this.textBox1);
             this.panel2_BHavCopyPanel.Controls.Add(this.label6_Last5PrevPrice);
             this.panel2_BHavCopyPanel.Controls.Add(this.label3);
             this.panel2_BHavCopyPanel.Controls.Add(this.button2);
@@ -181,11 +183,18 @@
             // label6_Last5PrevPrice
             // 
             this.label6_Last5PrevPrice.AutoSize = true;
-            this.label6_Last5PrevPrice.Location = new System.Drawing.Point(145, 108);
+            this.label6_Last5PrevPrice.Location = new System.Drawing.Point(18, 108);
             this.label6_Last5PrevPrice.Name = "label6_Last5PrevPrice";
             this.label6_Last5PrevPrice.Size = new System.Drawing.Size(86, 13);
             this.label6_Last5PrevPrice.TabIndex = 4;
             this.label6_Last5PrevPrice.Text = "Last 5 Prev Day:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(148, 105);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(628, 20);
+            this.textBox1.TabIndex = 5;
             // 
             // Form1
             // 
@@ -223,6 +232,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6_Last5PrevPrice;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
