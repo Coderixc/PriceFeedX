@@ -21,7 +21,8 @@ namespace PriceFeedX
         private ReadFileFromNSE_EQUITY readFileFromNSE_EQUITY;
 
         private List<string> List_Symbol;
-        
+        private List<string> List_BhavCopy_Prev5;
+
 
         #endregion
 
@@ -41,6 +42,7 @@ namespace PriceFeedX
             {
                 //variable
                 this.List_Symbol = new List<string>();
+                this.List_BhavCopy_Prev5 = new List<string>();
 
 
 
@@ -89,6 +91,46 @@ namespace PriceFeedX
             }
 
         }
+
+
+        private void TaskProcess_002()
+        {
+            DataBase _user_1 = null;
+            try
+            {
+                _user_1 = new DataBase();
+                _user_1.OpenConnection();
+                DataTable dt = new DataTable();
+                //SELECT distinct  Timestamp FROM pricedata.bhavcopyprice   order by `timestamp` Desc;
+                string query = " SELECT  distinct  Timestamp FROM " + Credential.mSchema + "." + Credential.mTable_BhavCopyPrice + " order by `timestamp` Desc; ";
+
+                // Fetch symbol name from Table
+                _user_1.ExecuteReader(query, ref dt);
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show($" Bhav Copy table is Empty in : {Credential.mTable_BhavCopyPrice} ");
+                }
+
+                //convert datatble symboil to List
+
+                var list = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<string>(NSE_EQ_BHAVCOPY.mTIMESTAMP)).ToList();
+
+                this.List_Symbol = list;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to  Load SymbolList");
+            }
+            finally
+            {
+                _user_1.Reset();
+            }
+
+        }
+
+
 
 
 
