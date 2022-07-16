@@ -40,9 +40,8 @@
             this.Label_BHAVCOPYPATH = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6_Last5PrevPrice = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox1_BhavCopyLast5Date = new System.Windows.Forms.TextBox();
             this.panel2_BHavCopyPanel.SuspendLayout();
             this.panel3_LOAD_BHAVCOPY_TOPXX.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -51,7 +50,7 @@
             // panel2_BHavCopyPanel
             // 
             this.panel2_BHavCopyPanel.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel2_BHavCopyPanel.Controls.Add(this.textBox1);
+            this.panel2_BHavCopyPanel.Controls.Add(this.textBox1_BhavCopyLast5Date);
             this.panel2_BHavCopyPanel.Controls.Add(this.label6_Last5PrevPrice);
             this.panel2_BHavCopyPanel.Controls.Add(this.label3);
             this.panel2_BHavCopyPanel.Controls.Add(this.button2);
@@ -154,7 +153,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(9, 3);
             this.panel1.Name = "panel1";
@@ -171,15 +169,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "NSE BHAV COPY TOOL 1.0.1";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(0, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "label5";
-            // 
             // label6_Last5PrevPrice
             // 
             this.label6_Last5PrevPrice.AutoSize = true;
@@ -189,12 +178,14 @@
             this.label6_Last5PrevPrice.TabIndex = 4;
             this.label6_Last5PrevPrice.Text = "Last 5 Prev Day:";
             // 
-            // textBox1
+            // textBox1_BhavCopyLast5Date
             // 
-            this.textBox1.Location = new System.Drawing.Point(148, 105);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(628, 20);
-            this.textBox1.TabIndex = 5;
+            this.textBox1_BhavCopyLast5Date.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.textBox1_BhavCopyLast5Date.Location = new System.Drawing.Point(148, 105);
+            this.textBox1_BhavCopyLast5Date.Name = "textBox1_BhavCopyLast5Date";
+            this.textBox1_BhavCopyLast5Date.Size = new System.Drawing.Size(628, 20);
+            this.textBox1_BhavCopyLast5Date.TabIndex = 5;
+            this.textBox1_BhavCopyLast5Date.Text = "BhavCopyDate";
             // 
             // Form1
             // 
@@ -231,8 +222,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6_Last5PrevPrice;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox1_BhavCopyLast5Date;
     }
 }
 

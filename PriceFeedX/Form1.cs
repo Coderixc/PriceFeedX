@@ -33,6 +33,10 @@ namespace PriceFeedX
             this.INIT();
 
             InitializeComponent();
+
+            string List5days = string.Join(",  ", this.List_BhavCopy_Prev5.ToArray());
+
+            this.textBox1_BhavCopyLast5Date.Text = List5days;
         }
         #endregion
 
@@ -122,9 +126,7 @@ namespace PriceFeedX
 
                 this.List_BhavCopy_Prev5 = list;
 
-                string List5days = string.Join(",", this.List_BhavCopy_Prev5.ToArray());
 
-                this.label6_Last5PrevPrice.Text += List5days;
 
             }
             catch (Exception ex)
