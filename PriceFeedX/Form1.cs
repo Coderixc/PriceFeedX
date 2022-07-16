@@ -48,6 +48,7 @@ namespace PriceFeedX
 
                 //function
                 this.TaskProcess_001();
+                this.TaskProcess_002(); 
             }
             catch (Exception ex)
             {
