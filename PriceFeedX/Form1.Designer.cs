@@ -56,10 +56,10 @@
             this.panel2_BHavCopyPanel.Controls.Add(this.button2);
             this.panel2_BHavCopyPanel.Controls.Add(this.textBox1_BHAVCOPY_EQ);
             this.panel2_BHavCopyPanel.Controls.Add(this.label2);
-            this.panel2_BHavCopyPanel.Location = new System.Drawing.Point(8, 56);
+            this.panel2_BHavCopyPanel.Location = new System.Drawing.Point(0, 56);
             this.panel2_BHavCopyPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2_BHavCopyPanel.Name = "panel2_BHavCopyPanel";
-            this.panel2_BHavCopyPanel.Size = new System.Drawing.Size(787, 146);
+            this.panel2_BHavCopyPanel.Size = new System.Drawing.Size(795, 146);
             this.panel2_BHavCopyPanel.TabIndex = 1;
             // 
             // label3
@@ -108,10 +108,10 @@
             this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.button1);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.textBox1_Nse_TOP_XX_LIST);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.Label_BHAVCOPYPATH);
-            this.panel3_LOAD_BHAVCOPY_TOPXX.Location = new System.Drawing.Point(8, 206);
+            this.panel3_LOAD_BHAVCOPY_TOPXX.Location = new System.Drawing.Point(0, 206);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Name = "panel3_LOAD_BHAVCOPY_TOPXX";
-            this.panel3_LOAD_BHAVCOPY_TOPXX.Size = new System.Drawing.Size(787, 97);
+            this.panel3_LOAD_BHAVCOPY_TOPXX.Size = new System.Drawing.Size(795, 97);
             this.panel3_LOAD_BHAVCOPY_TOPXX.TabIndex = 2;
             // 
             // label1
@@ -154,9 +154,9 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(9, 3);
+            this.panel1.Location = new System.Drawing.Point(0, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(785, 48);
+            this.panel1.Size = new System.Drawing.Size(794, 48);
             this.panel1.TabIndex = 3;
             // 
             // label4

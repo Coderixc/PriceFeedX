@@ -50,6 +50,8 @@ namespace PriceFeedX
 
 
 
+
+
                 //function
                 this.TaskProcess_001();
                 this.TaskProcess_002(); 
@@ -84,10 +86,7 @@ namespace PriceFeedX
                 var list = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<string>(NSE_EQ_BHAVCOPY.mSYMBOL)).ToList();
 
                 this.List_Symbol = list;
-                
-
-
-
+               
             }
             catch (Exception ex)
             {
@@ -125,8 +124,6 @@ namespace PriceFeedX
                 var list = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<string>(NSE_EQ_BHAVCOPY.mTIMESTAMP)).ToList();
 
                 this.List_BhavCopy_Prev5 = list;
-
-
 
             }
             catch (Exception ex)
