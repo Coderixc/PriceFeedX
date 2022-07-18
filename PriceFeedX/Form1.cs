@@ -137,6 +137,11 @@ namespace PriceFeedX
 
         }
 
+        private void TaskProces_003()
+        {
+            
+
+        }
 
 
 
