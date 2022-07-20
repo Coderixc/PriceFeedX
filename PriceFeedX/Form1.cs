@@ -224,6 +224,8 @@ namespace PriceFeedX
                         this.TaskProcess2(path);
                     }
 
+                    this.INIT(); //Refresh
+
                 }
             }
             catch (Exception ex)
