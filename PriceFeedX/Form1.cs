@@ -219,6 +219,7 @@ namespace PriceFeedX
 
                     textBox1_BHAVCOPY_EQ.Text = path;
 
+
                     if (textBox1_Nse_TOP_XX_LIST.Text != null)
                     {
                         this.TaskProcess2(path);
