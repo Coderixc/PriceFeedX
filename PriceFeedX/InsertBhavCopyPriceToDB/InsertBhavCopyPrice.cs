@@ -23,6 +23,7 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
         public const string mTIMESTAMP   = @"TIMESTAMP";
         public const string mCLOSE       = @"CLOSE";
         public const string mOPEN = @"OPEN";
+
         public const string mHIGH = @"HIGH";
         public const string mLOW = @"LOW";
         public const string mTOTTRDQTY   = @"TOTTRDQTY";
