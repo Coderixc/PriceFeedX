@@ -23,7 +23,7 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
         public const string mTIMESTAMP   = @"TIMESTAMP";
         public const string mCLOSE       = @"CLOSE";
         public const string mOPEN = @"OPEN";
-        public const string mmHIGH = @"HIGH";
+        public const string mHIGH = @"HIGH";
         public const string mLOW = @"LOW";
         public const string mTOTTRDQTY   = @"TOTTRDQTY";
         public const string mTOTTRDVAL   = @"TOTTRDVAL";
@@ -86,8 +86,11 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
                                      (
                                               
                                     `"+TABLE_NSE_BHAVCOPY.mSymbol      +@"`,
-                                    `"+TABLE_NSE_BHAVCOPY.mTIMESTAMP   +@"`,
-                                    `"+TABLE_NSE_BHAVCOPY.mCLOSE       +@"`,
+                                    `"+TABLE_NSE_BHAVCOPY.mTIMESTAMP   + @"`,
+                                    `" + TABLE_NSE_BHAVCOPY.mOPEN + @"`, 
+                                    `" + TABLE_NSE_BHAVCOPY.mHIGH + @"`,
+                                    `" + TABLE_NSE_BHAVCOPY.mLOW + @"`,
+                                    `" + TABLE_NSE_BHAVCOPY.mCLOSE       +@"`,
                                     `"+TABLE_NSE_BHAVCOPY.mTOTTRDQTY   +@"`,
                                     `"+TABLE_NSE_BHAVCOPY.mTOTTRDVAL   +@"`,
                                     `"+TABLE_NSE_BHAVCOPY.mTOTALTRADES + @"`
@@ -108,6 +111,11 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
                             insertquery_values += "("
                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mSymbol].ToString() + "',"
                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mTIMESTAMP].ToString() + "',"
+
+                                               + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mOPEN].ToString() + "',"
+                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mHIGH].ToString() + "',"
+                                                 + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mLOW].ToString() + "',"
+
                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mCLOSE].ToString() + "',"
                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mTOTTRDQTY].ToString() + "',"
                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mTOTTRDVAL].ToString() + "',"
