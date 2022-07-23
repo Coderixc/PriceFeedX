@@ -69,6 +69,9 @@ namespace PriceFeedX
             try
             {
                 this.TaskProcess_002();
+                string List5days = string.Join(",  ", this.List_BhavCopy_Prev5.ToArray());
+
+                this.textBox1_BhavCopyLast5Date.Text = List5days;
 
             }
             catch (Exception ex)
