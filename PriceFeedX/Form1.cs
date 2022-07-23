@@ -63,6 +63,22 @@ namespace PriceFeedX
             }
         }
 
+        private void Refresh()
+        {
+
+            try
+            {
+                this.TaskProcess_002();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);    
+            }
+            
+
+
+        }
         private void TaskProcess_001()
         {
             DataBase _user_1 = null;
@@ -225,7 +241,7 @@ namespace PriceFeedX
                         this.TaskProcess2(path);
                     }
 
-                    this.INIT(); //Refresh
+                    this.Refresh(); //Refresh
 
                 }
             }
