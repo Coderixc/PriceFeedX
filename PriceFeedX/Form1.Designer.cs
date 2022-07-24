@@ -42,9 +42,12 @@
             this.Label_BHAVCOPYPATH = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label5_AuTODownload = new System.Windows.Forms.Label();
             this.panel2_BHavCopyPanel.SuspendLayout();
             this.panel3_LOAD_BHAVCOPY_TOPXX.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2_BHavCopyPanel
@@ -66,7 +69,7 @@
             // 
             this.textBox1_BhavCopyLast5Date.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.textBox1_BhavCopyLast5Date.Location = new System.Drawing.Point(197, 129);
-            this.textBox1_BhavCopyLast5Date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1_BhavCopyLast5Date.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1_BhavCopyLast5Date.Name = "textBox1_BhavCopyLast5Date";
             this.textBox1_BhavCopyLast5Date.Size = new System.Drawing.Size(836, 22);
             this.textBox1_BhavCopyLast5Date.TabIndex = 5;
@@ -145,7 +148,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(945, 22);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 23);
             this.button1.TabIndex = 2;
@@ -157,7 +160,7 @@
             // textBox1_Nse_TOP_XX_LIST
             // 
             this.textBox1_Nse_TOP_XX_LIST.Location = new System.Drawing.Point(197, 22);
-            this.textBox1_Nse_TOP_XX_LIST.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1_Nse_TOP_XX_LIST.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1_Nse_TOP_XX_LIST.Name = "textBox1_Nse_TOP_XX_LIST";
             this.textBox1_Nse_TOP_XX_LIST.Size = new System.Drawing.Size(727, 22);
             this.textBox1_Nse_TOP_XX_LIST.TabIndex = 1;
@@ -177,7 +180,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(0, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1059, 59);
             this.panel1.TabIndex = 3;
@@ -186,18 +189,40 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(400, 21);
+            this.label4.Location = new System.Drawing.Point(400, 30);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(250, 24);
             this.label4.TabIndex = 0;
             this.label4.Text = "NSE BHAV COPY TOOL 1.0.1";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel2.Controls.Add(this.label5_AuTODownload);
+            this.panel2.Location = new System.Drawing.Point(4, 480);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1055, 40);
+            this.panel2.TabIndex = 4;
+            // 
+            // label5_AuTODownload
+            // 
+            this.label5_AuTODownload.AutoSize = true;
+            this.label5_AuTODownload.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label5_AuTODownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5_AuTODownload.Location = new System.Drawing.Point(26, 11);
+            this.label5_AuTODownload.Name = "label5_AuTODownload";
+            this.label5_AuTODownload.Size = new System.Drawing.Size(161, 16);
+            this.label5_AuTODownload.TabIndex = 0;
+            this.label5_AuTODownload.Text = "Import Nse Bhav Copy";
+            this.label5_AuTODownload.Click += new System.EventHandler(this.label5_AuTODownload_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 375);
+            this.ClientSize = new System.Drawing.Size(1064, 524);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3_LOAD_BHAVCOPY_TOPXX);
             this.Controls.Add(this.panel2_BHavCopyPanel);
@@ -210,6 +235,8 @@
             this.panel3_LOAD_BHAVCOPY_TOPXX.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -229,6 +256,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6_Last5PrevPrice;
         private System.Windows.Forms.TextBox textBox1_BhavCopyLast5Date;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label5_AuTODownload;
     }
 }
 

@@ -255,6 +255,11 @@ namespace PriceFeedX
 
         }
 
+        private void label5_AuTODownload_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 
