@@ -21,7 +21,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
         private void Rawdata()
         {
-             this.Url = "https://www1.nseindia.com/ArchieveSearch?h_filetype=eqbhav&date=20-07-2022&section=EQ"
+            this.Url = "https://www1.nseindia.com/ArchieveSearch?h_filetype=eqbhav&date=20-07-2022&section=EQ";
 
 
         }
