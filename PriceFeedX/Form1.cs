@@ -11,6 +11,7 @@ using System.IO;
 using PriceFeedX.LoadSymbolFromFiles;
 using CustomDataBase;
 using System.Reflection;
+using PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy;
 
 
 namespace PriceFeedX
@@ -257,6 +258,9 @@ namespace PriceFeedX
 
         private void label5_AuTODownload_Click(object sender, EventArgs e)
         {
+            //AUTO IMPORTER
+            ImportNseBhavCopy _ImportNseBhavCopy = new ImportNseBhavCopy();
+
 
         }
 
