@@ -129,5 +129,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Import Bhav Copy NSE\DumpBhavCopyToLocal\" />
+    <Folder Include="Import Bhav Copy NSE\RequestApiToNseForBhavCopy\" />
+    <Folder Include="Import Bhav Copy NSE\ShowImportStatusToConsole_UserControl\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
