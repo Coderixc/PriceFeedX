@@ -26,7 +26,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
         }
 
-        private void BulkImporter()
+        public void BulkImporter()
         {
             string[] monthList = new string[3] { "JUN", "JUL", "AUG" };
             try
@@ -39,31 +39,36 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                 {
                     WebClient client = new WebClient();
                     FileStream writer;
+
                     for (int i = 1; i < 31; i++)
                     {
                         try
                         {
                             string iStr = (i <= 9) ? "0" + i.ToString() : i.ToString();
-                            tempUri = new Uri(uri, month + "/cm" + iStr + month + "2007bhav.csv");
-                            Debug.WriteLine("Downloading " + tempUri.ToString());
-                            byte[] data = client.DownloadData(tempUri);
-                            using (writer = File.Create(@"C:\NSE\cm" + i.ToString() + month + "2007bhav.csv"))
-                            {
-                                try
-                                {
-                                    writer.Write(data, 0, data.Length);
-                                }
-                                finally
-                                {
-                                    if (writer != null)
-                                        writer.Close();
-                                }
-                            }
+                            //tempUri = new Uri(uri, month + "/cm" + iStr + month + "2007bhav.csv");
+                            //Debug.WriteLine("Downloading " + tempUri.ToString());
+                            //byte[] data = client.DownloadData(tempUri);
+                           // byte[] data = client.DownloadData(this.Url);
+
+                            client.DownloadFile(this.Url, "cm19JUL2022bhav.csv.zip");
+
+                            //using (writer = File.Create(@"C:\NSE\cm" + i.ToString() + month + "2007bhav.csv"))
+                            //{
+                            //    try
+                            //    {
+                            //        writer.Write(data, 0, data.Length);
+                            //    }
+                            //    finally
+                            //    {
+                            //        if (writer != null)
+                            //            writer.Close();
+                            //    }
+                            //}
                         }
                         catch (WebException ex)
                         {
                             if (ex.Status == WebExceptionStatus.ProtocolError && ex.Message.Contains("404"))
-                                Debug.WriteLine("FileNotFound");
+                                //Debug.WriteLine("FileNotFound");
                             continue;
                         }
                     }
@@ -72,7 +77,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("Failed");
+                //Debug.WriteLine("Failed");
             }
 
 

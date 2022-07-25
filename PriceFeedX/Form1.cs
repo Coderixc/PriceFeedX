@@ -261,7 +261,7 @@ namespace PriceFeedX
             //AUTO IMPORTER
             ImportNseBhavCopy _ImportNseBhavCopy = new ImportNseBhavCopy();
 
-
+            _ImportNseBhavCopy.BulkImporter();
         }
 
 
