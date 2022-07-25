@@ -28,7 +28,11 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
         public void BulkImporter()
         {
-            string[] monthList = new string[3] { "JUN", "JUL", "AUG" };
+            string[] monthList = new string[12] { "JAN","FEB","MAR","APR","MAY", "JUN", "JUL", "AUG","SEP","OCT","NOV","DEC" };
+
+
+           
+
             try
             {
                 //Uri uri = new Uri(@"http://www.nse-india.com/content/historical/EQUITIES/2007/");
@@ -48,22 +52,19 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             //tempUri = new Uri(uri, month + "/cm" + iStr + month + "2007bhav.csv");
                             //Debug.WriteLine("Downloading " + tempUri.ToString());
                             //byte[] data = client.DownloadData(tempUri);
-                           // byte[] data = client.DownloadData(this.Url);
+                            // byte[] data = client.DownloadData(this.Url);
 
-                            client.DownloadFileAsync(uri, "cm19JUL2022bhav.csv.zip");
 
-                            //using (writer = File.Create(@"C:\NSE\cm" + i.ToString() + month + "2007bhav.csv"))
-                            //{
-                            //    try
-                            //    {
-                            //        writer.Write(data, 0, data.Length);
-                            //    }
-                            //    finally
-                            //    {
-                            //        if (writer != null)
-                            //            writer.Close();
-                            //    }
-                            //}
+                            WebClient webClient = new WebClient();
+                            webClient.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
+                            webClient.Headers.Add("User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
+
+                            string url_Direct = @"https://www1.nseindia.com/content/historical/EQUITIES/2022/JUL/cm20JUL2022bhav.csv.zip";
+                            Uri uri_t = new Uri(url_Direct);
+                            webClient.DownloadFileAsync(uri_t, "cm19JUL2022bhav.csv.zip");
+
+                            ///<a href="/content/historical/EQUITIES/2022/JUL/cm20JUL2022bhav.csv.zip" target="new">cm20JUL2022bhav.csv.zip</a>
+
                         }
                         catch (WebException ex)
                         {
