@@ -50,7 +50,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             //byte[] data = client.DownloadData(tempUri);
                            // byte[] data = client.DownloadData(this.Url);
 
-                            client.DownloadFile(this.Url, "cm19JUL2022bhav.csv.zip");
+                            client.DownloadFileAsync(uri, "cm19JUL2022bhav.csv.zip");
 
                             //using (writer = File.Create(@"C:\NSE\cm" + i.ToString() + month + "2007bhav.csv"))
                             //{
