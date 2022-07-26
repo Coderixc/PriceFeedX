@@ -48,11 +48,10 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                     {
                         try
                         {
-                            string iStr = (i <= 9) ? "0" + i.ToString() : i.ToString();
-                            //tempUri = new Uri(uri, month + "/cm" + iStr + month + "2007bhav.csv");
-                            //Debug.WriteLine("Downloading " + tempUri.ToString());
-                            //byte[] data = client.DownloadData(tempUri);
-                            // byte[] data = client.DownloadData(this.Url);
+                            string f1 = String.Empty;
+                            string f1_Prefix = "cm";
+                            string f1_Suffix = "bhav.csv.zip";
+
 
 
                             WebClient webClient = new WebClient();
