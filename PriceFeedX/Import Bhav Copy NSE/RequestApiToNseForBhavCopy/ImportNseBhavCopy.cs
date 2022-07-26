@@ -16,22 +16,34 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         public ImportNseBhavCopy()
         {
             Rawdata();
-
         }
 
         private void Rawdata()
         {
             this.Url = "https://www1.nseindia.com/ArchieveSearch?h_filetype=eqbhav&date=20-07-2022&section=EQ";
-
-
         }
 
         public void BulkImporter()
         {
             string[] monthList = new string[12] { "JAN","FEB","MAR","APR","MAY", "JUN", "JUL", "AUG","SEP","OCT","NOV","DEC" };
+            string[] yearList = new string[3] { "2020", "2021", "2022" };
+            
+            int days = System.Globalization.CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(2020, 02);
 
 
-           
+
+            foreach (string  year in  yearList)
+            {
+                foreach(string month in monthList)
+                {
+
+                   string linl = year +month
+                   
+
+
+                }
+
+            }
 
             try
             {
@@ -39,10 +51,15 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                 Uri uri = new Uri(this.Url);
 
                 Uri tempUri;
+
+
+
                 foreach (string month in monthList)
                 {
                     WebClient client = new WebClient();
                     FileStream writer;
+
+
 
                     for (int i = 1; i < 31; i++)
                     {
@@ -51,6 +68,8 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             string f1 = String.Empty;
                             string f1_Prefix = "cm";
                             string f1_Suffix = "bhav.csv.zip";
+
+
 
 
 
