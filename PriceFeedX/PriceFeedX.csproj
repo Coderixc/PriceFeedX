@@ -98,6 +98,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Import Bhav Copy NSE\DumpBhavCopyToLoacal.cs" />
     <Compile Include="Import Bhav Copy NSE\RequestApiToNseForBhavCopy\ImportNseBhavCopy.cs" />
     <Compile Include="InsertBhavCopyPriceToDB\InsertBhavCopyPrice.cs" />
     <Compile Include="InsertSymbolToDB\InsertSymbolToDB.cs" />
