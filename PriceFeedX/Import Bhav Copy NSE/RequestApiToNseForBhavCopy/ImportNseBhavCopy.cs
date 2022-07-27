@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.IO;
+using System.Windows.Forms;
 
 using PriceFeedX.Import_Bhav_Copy_NSE;
 namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
@@ -13,18 +14,18 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
     internal enum E_Month
     {
-         JAN =1,
-         FEB,
-         MAR,
-         APR,
-         MAY, 
-         JUN, 
-         JUL, 
-         AUG, 
-         SEP,
-         OCT, 
-         NOV, 
-         DEC
+        JAN = 1,
+        FEB,
+        MAR,
+        APR,
+        MAY,
+        JUN,
+        JUL,
+        AUG,
+        SEP,
+        OCT,
+        NOV,
+        DEC
     }
 
     internal class ImportNseBhavCopy
@@ -32,6 +33,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
         private string Url = string.Empty;
         private E_Month EMonth;
+        private Queue<string> Queue_Saturday_sunday;
 
         public DumpFolder _DumpFolder;
         public ImportNseBhavCopy()
@@ -39,6 +41,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
             Rawdata();
 
             this._DumpFolder = new DumpFolder();
+            this.Queue_Saturday_sunday = new Queue<string>();
 
 
         }
@@ -49,7 +52,46 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         }
 
 
+        private bool ExclueSaturday_Sunday(string yyyy,int month,int day)
+        {
+            bool result = false;
+            try
+            {
+                var date = new DateTime(Convert.ToInt32(yyyy), month, day);
+                if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    this.Queue_Saturday_sunday.Enqueue(yyyy + @"\" + month + @"\" + day);
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+            }
+            return result;
+        }
 
+
+        private bool ExtractRequesttillToday(string yyyy, int month, int day)
+        {
+
+            DateTime dtnow = DateTime.Now;
+
+            var date = new DateTime(Convert.ToInt32(yyyy), month, day);
+
+            if (dtnow < DateTime.Now)
+            {
+                MessageBox.Show("Completed Till "   + dtnow);
+                return true;
+            }
+
+
+            return false;
+        }
         public void BulkImporter()
         {
 
@@ -80,12 +122,22 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                         continue;
                     try
                     {
-                        for (int day = 1; day <= 5; day++)
+                        for (int day = 1; day <= days; day++)
                         {
                             string tempurl = @"https://www1.nseindia.com/content/historical/EQUITIES" + "/" + year + "/" + month + "/";
 
+                            if (this.ExclueSaturday_Sunday(year, count, day)) 
+                                continue;
+
+
+                            if (this.ExtractRequesttillToday(year, count, day))
+                                break;
+
+
+
+
                             string twodigitdate = day.ToString();
-                            if(day.ToString().Length ==1)
+                            if (day.ToString().Length == 1)
                             {
                                 twodigitdate = "0" + day;
                             }
@@ -120,5 +172,5 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         }
     }
 
-    }
+}
 
