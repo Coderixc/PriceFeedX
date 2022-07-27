@@ -22,6 +22,8 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE
         {
             try
             {
+
+
                 if (!Directory.Exists(Dump_Path))
                 {
                     Directory.CreateDirectory(Dump_Path);
