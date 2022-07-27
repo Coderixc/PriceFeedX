@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.IO;
 
+using PriceFeedX.Import_Bhav_Copy_NSE;
 namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 {
 
@@ -31,9 +32,12 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
         private string Url = string.Empty;
         private E_Month EMonth;
+
+        DumpBhavCopyToLoacal _DumpBhavCopyToLocal;
         public ImportNseBhavCopy()
         {
             Rawdata();
+            this._DumpBhavCopyToLocal  = new DumpBhavCopyToLoacal();
         }
 
         private void Rawdata()
