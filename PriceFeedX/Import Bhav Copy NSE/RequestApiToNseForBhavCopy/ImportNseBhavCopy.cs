@@ -37,7 +37,10 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         public ImportNseBhavCopy()
         {
             Rawdata();
+
             this._DumpBhavCopyToLocal  = new DumpBhavCopyToLoacal();
+
+
         }
 
         private void Rawdata()
@@ -47,17 +50,51 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
         public void BulkImporter()
         {
+
             //string[] monthList = new string[12] { "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" };
             string[] yearList = new string[1] {  "2022" };
+
+            string[] monthList = new string[12] { "JAN","FEB","MAR","APR","MAY", "JUN", "JUL", "AUG","SEP","OCT","NOV","DEC" };
+            string[] yearList = new string[3] { "2020", "2021", "2022" };
+            
+            int days = System.Globalization.CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(2020, 02);
+
+
+
+
+            foreach (string  year in  yearList)
+            {
+                foreach(string month in monthList)
+                {
+
+                   string linl = year +month
+                   
 
 
             string f1_Prefix = "cm";
             string f1_Suffix = "bhav.csv.zip";
 
+
+                }
+
+            }
+
+
             foreach (string year in yearList)
             {
+
                 int count = 0;
                 foreach (string month in Enum.GetNames(typeof(E_Month)))
+
+                //Uri uri = new Uri(@"http://www.nse-india.com/content/historical/EQUITIES/2007/");
+                Uri uri = new Uri(this.Url);
+
+                Uri tempUri;
+
+
+
+                foreach (string month in monthList)
+
                 {
                     count++;
                     string link = year + month;
@@ -65,6 +102,10 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
                     int days = -1;
                     try
+
+
+                    for (int i = 1; i < 31; i++)
+
                     {
                         days = System.Globalization.CultureInfo.CurrentCulture.Calendar.GetDaysInMonth(Convert.ToInt32(year), count);
                     }
@@ -89,6 +130,8 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             string outputfolder = f1_Prefix + day + month + year + f1_Suffix;
                             tempurl += outputfolder;
                             string f1 = String.Empty;
+
+
 
                             WebClient webClient = new WebClient();
                             webClient.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
