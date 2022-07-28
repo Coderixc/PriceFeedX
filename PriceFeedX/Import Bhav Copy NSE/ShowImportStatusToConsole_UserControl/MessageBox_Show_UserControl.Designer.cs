@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.eventLog1 = new System.Diagnostics.EventLog();
             this.eventLog2_User_Control = new System.Diagnostics.EventLog();
             this.panel1.SuspendLayout();
@@ -45,18 +45,8 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(3, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(879, 296);
+            this.panel1.Size = new System.Drawing.Size(778, 296);
             this.panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(332, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Importing Progress ";
             // 
             // panel2
             // 
@@ -64,8 +54,18 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(863, 46);
+            this.panel2.Size = new System.Drawing.Size(775, 26);
             this.panel2.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(304, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(156, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Importing Progress ";
             // 
             // eventLog1
             // 
@@ -81,7 +81,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "MessageBox_Show_UserControl";
-            this.Size = new System.Drawing.Size(890, 316);
+            this.Size = new System.Drawing.Size(787, 311);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

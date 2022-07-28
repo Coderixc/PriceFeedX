@@ -9,6 +9,7 @@ using System.IO;
 using System.Windows.Forms;
 
 using PriceFeedX.Import_Bhav_Copy_NSE;
+using PriceFeedX.Import_Bhav_Copy_NSE.ShowImportStatusToConsole_UserControl;
 namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 {
 
@@ -36,12 +37,17 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         private Queue<string> Queue_Saturday_sunday;
 
         public DumpFolder _DumpFolder;
+        public MessageBox_Show_UserControl userControl_MessageProgressBar;
         public ImportNseBhavCopy()
         {
             Rawdata();
 
             this._DumpFolder = new DumpFolder();
             this.Queue_Saturday_sunday = new Queue<string>();
+
+            this.userControl_MessageProgressBar = new MessageBox_Show_UserControl();
+
+            userControl_MessageProgressBar.Show();  
 
 
         }

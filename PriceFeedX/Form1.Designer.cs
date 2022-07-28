@@ -44,6 +44,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5_AuTODownload = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.panel3_Progressbar = new System.Windows.Forms.Panel();
             this.panel2_BHavCopyPanel.SuspendLayout();
             this.panel3_LOAD_BHAVCOPY_TOPXX.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -199,6 +201,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.label5_AuTODownload);
             this.panel2.Location = new System.Drawing.Point(4, 480);
             this.panel2.Name = "panel2";
@@ -217,11 +220,31 @@
             this.label5_AuTODownload.Text = "Import Nse Bhav Copy";
             this.label5_AuTODownload.Click += new System.EventHandler(this.label5_AuTODownload_Click);
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(902, 8);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(146, 26);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Running Status";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // panel3_Progressbar
+            // 
+            this.panel3_Progressbar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel3_Progressbar.Location = new System.Drawing.Point(12, 533);
+            this.panel3_Progressbar.Name = "panel3_Progressbar";
+            this.panel3_Progressbar.Size = new System.Drawing.Size(1046, 229);
+            this.panel3_Progressbar.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 524);
+            this.ClientSize = new System.Drawing.Size(1064, 763);
+            this.Controls.Add(this.panel3_Progressbar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3_LOAD_BHAVCOPY_TOPXX);
@@ -258,6 +281,8 @@
         private System.Windows.Forms.TextBox textBox1_BhavCopyLast5Date;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5_AuTODownload;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel3_Progressbar;
     }
 }
 

@@ -12,7 +12,7 @@ using PriceFeedX.LoadSymbolFromFiles;
 using CustomDataBase;
 using System.Reflection;
 using PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy;
-
+using PriceFeedX.Import_Bhav_Copy_NSE.ShowImportStatusToConsole_UserControl;
 
 namespace PriceFeedX
 {
@@ -262,6 +262,15 @@ namespace PriceFeedX
             ImportNseBhavCopy _ImportNseBhavCopy = new ImportNseBhavCopy();
 
             _ImportNseBhavCopy.BulkImporter();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+
+           MessageBox_Show_UserControl uc_Panel = new MessageBox_Show_UserControl();   
+            
+            this.panel3_Progressbar.Controls.Add( uc_Panel);    
         }
 
 
