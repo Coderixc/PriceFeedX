@@ -100,6 +100,12 @@
     </Compile>
     <Compile Include="Import Bhav Copy NSE\DumpFolder.cs" />
     <Compile Include="Import Bhav Copy NSE\RequestApiToNseForBhavCopy\ImportNseBhavCopy.cs" />
+    <Compile Include="Import Bhav Copy NSE\ShowImportStatusToConsole_UserControl\MessageBox_Show_UserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Import Bhav Copy NSE\ShowImportStatusToConsole_UserControl\MessageBox_Show_UserControl.Designer.cs">
+      <DependentUpon>MessageBox_Show_UserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="InsertBhavCopyPriceToDB\InsertBhavCopyPrice.cs" />
     <Compile Include="InsertSymbolToDB\InsertSymbolToDB.cs" />
     <Compile Include="LoadSymbolFromFiles\ReadFileFromNSE.cs" />
@@ -107,6 +113,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Import Bhav Copy NSE\ShowImportStatusToConsole_UserControl\MessageBox_Show_UserControl.resx">
+      <DependentUpon>MessageBox_Show_UserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -133,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Import Bhav Copy NSE\DumpBhavCopyToLocal\" />
-    <Folder Include="Import Bhav Copy NSE\ShowImportStatusToConsole_UserControl\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
