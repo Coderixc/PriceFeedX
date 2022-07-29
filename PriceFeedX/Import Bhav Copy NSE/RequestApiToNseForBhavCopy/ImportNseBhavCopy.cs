@@ -37,7 +37,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         private Queue<string> Queue_Saturday_sunday;
 
         public DumpFolder _DumpFolder;
-        public MessageBox_Show_UserControl userControl_MessageProgressBar;
+        //public MessageBox_Show_UserControl userControl_MessageProgressBar;
         public ImportNseBhavCopy()
         {
             Rawdata();
@@ -45,9 +45,9 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
             this._DumpFolder = new DumpFolder();
             this.Queue_Saturday_sunday = new Queue<string>();
 
-            this.userControl_MessageProgressBar = new MessageBox_Show_UserControl();
+            //this.userControl_MessageProgressBar = new MessageBox_Show_UserControl();
 
-            userControl_MessageProgressBar.Show();  
+           // userControl_MessageProgressBar.Show();  
 
 
         }
