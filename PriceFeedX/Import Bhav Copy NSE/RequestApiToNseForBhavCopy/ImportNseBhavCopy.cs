@@ -67,6 +67,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                 if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
                 {
                     this.Queue_Saturday_sunday.Enqueue(yyyy + @"\" + month + @"\" + day);
+                    
                     result = true;
                 }
                 else
