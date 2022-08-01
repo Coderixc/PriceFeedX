@@ -159,6 +159,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             string f1 = String.Empty;
 
 
+
                             WebClient webClient = new WebClient();
                             webClient.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
                             webClient.Headers.Add("User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)");
