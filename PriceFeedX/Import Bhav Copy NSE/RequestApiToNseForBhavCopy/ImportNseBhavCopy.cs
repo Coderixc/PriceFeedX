@@ -195,6 +195,21 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
             }
 
         }
+   
+    
+        public Queue<String> WorKlog()
+        {
+
+            try
+            {
+                return this.Queue_Progress;
+
+            }
+            catch
+            {
+                return new Queue<string>(); 
+            }
+        }
     }
 
 }
