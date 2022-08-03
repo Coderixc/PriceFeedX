@@ -16,5 +16,15 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.ShowImportStatusToConsole_UserControl
         {
             InitializeComponent();
         }
+
+        private void eventLog1_progressbar_EntryWritten(object sender, System.Diagnostics.EntryWrittenEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

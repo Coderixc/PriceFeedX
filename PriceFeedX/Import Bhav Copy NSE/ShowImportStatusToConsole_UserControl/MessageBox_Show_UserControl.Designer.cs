@@ -31,22 +31,23 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.eventLog1 = new System.Diagnostics.EventLog();
             this.eventLog2_User_Control = new System.Diagnostics.EventLog();
+            this.listBox1_progressbar = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog2_User_Control)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.listBox1_progressbar);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(3, 8);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(778, 296);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -67,13 +68,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Importing Progress ";
             // 
-            // eventLog1
-            // 
-            this.eventLog1.SynchronizingObject = this;
-            // 
             // eventLog2_User_Control
             // 
             this.eventLog2_User_Control.SynchronizingObject = this;
+            // 
+            // listBox1_progressbar
+            // 
+            this.listBox1_progressbar.FormattingEnabled = true;
+            this.listBox1_progressbar.ItemHeight = 16;
+            this.listBox1_progressbar.Location = new System.Drawing.Point(59, 71);
+            this.listBox1_progressbar.Name = "listBox1_progressbar";
+            this.listBox1_progressbar.Size = new System.Drawing.Size(620, 164);
+            this.listBox1_progressbar.TabIndex = 2;
             // 
             // MessageBox_Show_UserControl
             // 
@@ -85,7 +91,6 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog2_User_Control)).EndInit();
             this.ResumeLayout(false);
 
@@ -96,7 +101,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Diagnostics.EventLog eventLog1;
         private System.Diagnostics.EventLog eventLog2_User_Control;
+        public System.Windows.Forms.ListBox listBox1_progressbar;
     }
 }

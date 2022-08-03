@@ -36,14 +36,21 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         private E_Month EMonth;
         private Queue<string> Queue_Saturday_sunday;
 
+        private Queue<string> Queue_Progress;
+
         public DumpFolder _DumpFolder;
         //public MessageBox_Show_UserControl userControl_MessageProgressBar;
+
+
+
         public ImportNseBhavCopy()
         {
             Rawdata();
 
             this._DumpFolder = new DumpFolder();
             this.Queue_Saturday_sunday = new Queue<string>();
+
+            this.Queue_Progress = new Queue<string>();  
 
             //this.userControl_MessageProgressBar = new MessageBox_Show_UserControl();
 
@@ -167,6 +174,16 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
                             string Outputwithfolder = DumpFolder.Dump_Path + "/" + outputfolder;
                             webClient.DownloadFileAsync(uri_t, Outputwithfolder);
+
+                            string messg = "Importing Bhav Copy :" + twodigitdate + "/" + month + "/" + year + "| Bhav Copy:" + outputfolder;
+                            Queue_Progress.Enqueue(messg);
+
+
+                            // Present Status in GUI
+                            
+
+
+
                         }
                         ///<a href="/content/historical/EQUITIES/2022/JUL/cm20JUL2022bhav.csv.zip" target="new">cm20JUL2022bhav.csv.zip</a>
                     }

@@ -262,15 +262,21 @@ namespace PriceFeedX
             ImportNseBhavCopy _ImportNseBhavCopy = new ImportNseBhavCopy();
 
             _ImportNseBhavCopy.BulkImporter();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
 
 
-           MessageBox_Show_UserControl uc_Panel = new MessageBox_Show_UserControl();   
-            
-            this.panel3_Progressbar.Controls.Add( uc_Panel);    
+            MessageBox_Show_UserControl uc_Panel = new MessageBox_Show_UserControl();
+
+            this.panel3_Progressbar.Controls.Add(uc_Panel);
+
+            //uc_Panel.listBox1_progressbar.DataSource
+
+
+
         }
 
 
