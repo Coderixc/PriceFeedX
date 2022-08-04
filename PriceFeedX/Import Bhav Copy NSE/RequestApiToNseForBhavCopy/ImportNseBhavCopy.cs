@@ -109,7 +109,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         public void BulkImporter()
         {
 
-            string[] yearList = new string[1] { "2022" };
+            string[] yearList = new string[2] {"2021" , "2022" };
 
             string f1_Prefix = "cm";
             string f1_Suffix = "bhav.csv.zip";

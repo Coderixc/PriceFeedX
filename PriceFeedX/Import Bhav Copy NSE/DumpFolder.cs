@@ -13,9 +13,24 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE
         public const string Dump_Path = @".\1_Dump_BhavCopy";
         public const string Dump_Buffer_Path = @"\2_Buffer";
 
+        public string m_DatewiseFolder = String.Empty;
+
         public DumpFolder()
         {
             this.IsDumpFolderExist();
+            try
+            {
+                this.m_DatewiseFolder = Dump_Path;
+
+                string localdate = DateTime.Now.ToString("yyyy MM dd");
+                this.m_DatewiseFolder += localdate;
+            }
+            catch (Exception ex)
+            {
+                //TODO:
+            }
+
+
         }
         private void IsDumpFolderExist()
         {
@@ -36,6 +51,13 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE
                 {
                     Directory.CreateDirectory(Dump_Path + Dump_Buffer_Path);
                     //TODO
+                }
+
+                //Create local process date on local directory
+                //Maintaining Previous Transaction Details
+                if(!Directory.Exists(this.m_DatewiseFolder))
+                {
+                    Directory.CreateDirectory(this.m_DatewiseFolder);
                 }
 
             }
