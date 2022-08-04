@@ -17,18 +17,20 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE
 
         public DumpFolder()
         {
-            this.IsDumpFolderExist();
+ 
             try
             {
                 this.m_DatewiseFolder = Dump_Path;
 
-                string localdate = DateTime.Now.ToString("yyyy MM dd");
-                this.m_DatewiseFolder += localdate;
+                string localdate = DateTime.Now.ToString("yyyy_MM_dd");
+                this.m_DatewiseFolder += @"\"+"NSE_" + localdate;
             }
             catch (Exception ex)
             {
                 //TODO:
             }
+
+            this.IsDumpFolderExist();
 
 
         }
@@ -55,6 +57,9 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE
 
                 //Create local process date on local directory
                 //Maintaining Previous Transaction Details
+
+                
+
                 if(!Directory.Exists(this.m_DatewiseFolder))
                 {
                     Directory.CreateDirectory(this.m_DatewiseFolder);
