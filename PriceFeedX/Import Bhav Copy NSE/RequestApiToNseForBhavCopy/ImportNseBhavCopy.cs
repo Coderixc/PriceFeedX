@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 using PriceFeedX.Import_Bhav_Copy_NSE;
 using PriceFeedX.Import_Bhav_Copy_NSE.ShowImportStatusToConsole_UserControl;
+using System.Drawing;
+
 namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 {
 
@@ -41,6 +43,11 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         public DumpFolder _DumpFolder;
         //public MessageBox_Show_UserControl userControl_MessageProgressBar;
 
+        Panel dynamicPanel = new Panel();
+        private Form form;
+        
+        
+
 
 
         public ImportNseBhavCopy()
@@ -50,12 +57,13 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
             this._DumpFolder = new DumpFolder();
             this.Queue_Saturday_sunday = new Queue<string>();
 
-            this.Queue_Progress = new Queue<string>();  
+            this.Queue_Progress = new Queue<string>();
 
             //this.userControl_MessageProgressBar = new MessageBox_Show_UserControl();
 
-           // userControl_MessageProgressBar.Show();  
+            // userControl_MessageProgressBar.Show();  
 
+            Form_Gui_Console();
 
         }
 
@@ -65,6 +73,43 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
             this.Url = "https://www1.nseindia.com/ArchieveSearch?h_filetype=eqbhav&date=20-07-2022&section=EQ";
         }
 
+        public void Form_Gui_Console()
+        {
+            form = new Form();
+            form.Controls.Add(dynamicPanel);
+            CreateMyPanel();
+
+            form.Show();
+
+
+        }
+
+        public void CreateMyPanel()
+        {
+            Panel panel1 = new Panel();
+            TextBox textBox1 = new TextBox();
+            Label label1 = new Label();
+
+            // Initialize the Panel control.
+            panel1.Location = new Point(56, 72);
+            panel1.Size = new Size(264, 152);
+            // Set the Borderstyle for the Panel to three-dimensional.
+            panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+
+            // Initialize the Label and TextBox controls.
+            label1.Location = new Point(16, 16);
+            label1.Text = "label1";
+            label1.Size = new Size(104, 16);
+            textBox1.Location = new Point(16, 32);
+            textBox1.Text = "";
+            textBox1.Size = new Size(152, 20);
+
+            // Add the Panel control to the form.
+            dynamicPanel.Controls.Add(panel1);
+            // Add the Label and TextBox controls to the Panel.
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(textBox1);
+        }
 
         private bool ExclueSaturday_Sunday(string yyyy,int month,int day)
         {
@@ -172,11 +217,25 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             //string url_Direct = @"https://www1.nseindia.com/content/historical/EQUITIES/2022/JUL/cm20JUL2022bhav.csv.zip";
                             Uri uri_t = new Uri(tempurl);
 
-                            string Outputwithfolder = DumpFolder.Dump_Path + "/" + outputfolder;
-                            webClient.DownloadFileAsync(uri_t, Outputwithfolder);
+                            string Outputwithfolder = DumpFolder.m_DatewiseFolder + "/" + outputfolder;
 
-                            string messg = "Importing Bhav Copy :" + twodigitdate + "/" + month + "/" + year + "| Bhav Copy:" + outputfolder;
-                            Queue_Progress.Enqueue(messg);
+                            //If bhav copy already preent(downloaded) in Directory , avoid inserting Bhav Copy
+
+                            if(!File.Exists(Outputwithfolder))
+                            {
+                                webClient.DownloadFileAsync(uri_t, Outputwithfolder);
+                                string messg = "Importing Bhav Copy :" + twodigitdate + "/" + month + "/" + year + "| Bhav Copy:" + outputfolder;
+                                Queue_Progress.Enqueue(messg);
+
+                            }
+                            else
+                            {
+                                string messg = "Duplicate Bhav Copy :" + twodigitdate + "/" + month + "/" + year + "| Bhav Copy:" + outputfolder;
+                                Queue_Progress.Enqueue(messg);
+                            }
+                            
+
+
 
 
                             // Present Status in GUI
