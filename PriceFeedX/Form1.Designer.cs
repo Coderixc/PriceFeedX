@@ -43,8 +43,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5_AuTODownload = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.label5_AuTODownload = new System.Windows.Forms.Label();
             this.panel3_Progressbar = new System.Windows.Forms.Panel();
             this.panel2_BHavCopyPanel.SuspendLayout();
             this.panel3_LOAD_BHAVCOPY_TOPXX.SuspendLayout();
@@ -201,12 +202,34 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.label5_AuTODownload);
             this.panel2.Location = new System.Drawing.Point(4, 480);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1055, 40);
             this.panel2.TabIndex = 4;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(709, 8);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(169, 29);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Eztract Bhav Copy";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(902, 8);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(146, 26);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Running Status";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label5_AuTODownload
             // 
@@ -219,17 +242,6 @@
             this.label5_AuTODownload.TabIndex = 0;
             this.label5_AuTODownload.Text = "Import Nse Bhav Copy";
             this.label5_AuTODownload.Click += new System.EventHandler(this.label5_AuTODownload_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(902, 8);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(146, 26);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Running Status";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel3_Progressbar
             // 
@@ -283,6 +295,7 @@
         private System.Windows.Forms.Label label5_AuTODownload;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel3_Progressbar;
+        private System.Windows.Forms.Button button4;
     }
 }
 
