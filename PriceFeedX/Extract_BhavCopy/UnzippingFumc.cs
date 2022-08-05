@@ -24,7 +24,28 @@ namespace PriceFeedX.Extract_BhavCopy
         }
 
 
-        private  string Load_All_Directory_which_contain_Bhavcopy()
+
+        private string Unzip_Task001()
+        {
+            string result = String.Empty;
+            try
+            {
+
+                //Read all file in located Directory
+
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                return result;
+            }
+
+        }
+
+
+        private string Load_All_Directory_which_contain_Bhavcopy()
         {
             List<string> List_BhavCopy_collectioin;   
             try
@@ -73,7 +94,7 @@ namespace PriceFeedX.Extract_BhavCopy
                 FileStream compressedFileStream = File.Open(path_with_filename, FileMode.Open);
                 FileStream outputFileStream = File.Create(path_with_filename);
                 var decompressor = new GZipStream(compressedFileStream, CompressionMode.Decompress);
-                decompressor.CopyTo(outputFileStream)
+                decompressor.CopyTo(outputFileStream);
             }
             catch
             {
