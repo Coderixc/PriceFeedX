@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.IO.Compression;
 
 using PriceFeedX.Import_Bhav_Copy_NSE;
 namespace PriceFeedX.Extract_BhavCopy
@@ -65,7 +66,20 @@ namespace PriceFeedX.Extract_BhavCopy
         }
   
 
+        private void ExtractAll(string path_with_filename,  string output)
+        {
+            try
+            {
+                FileStream compressedFileStream = File.Open(path_with_filename, FileMode.Open);
+                FileStream outputFileStream = File.Create(path_with_filename);
+                var decompressor = new GZipStream(compressedFileStream, CompressionMode.Decompress);
+                decompressor.CopyTo(outputFileStream)
+            }
+            catch
+            {
 
+            }
+        }
 
 
 
