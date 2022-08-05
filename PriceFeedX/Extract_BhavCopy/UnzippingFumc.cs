@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 using PriceFeedX.Import_Bhav_Copy_NSE;
 namespace PriceFeedX.Extract_BhavCopy
@@ -28,7 +29,7 @@ namespace PriceFeedX.Extract_BhavCopy
             try
             {
 
-               this.Glob_all_Format(out List_BhavCopy_collectioin);
+               this.Glob(out List_BhavCopy_collectioin);
 
                 return "Sucessfully";
             }
@@ -43,15 +44,15 @@ namespace PriceFeedX.Extract_BhavCopy
 
 
 
-        private List<string> Glob_all_Format(out List<string> list)
+        private List<string> Glob(out List<string> list)
         {
             //Set Out parameters
             list = new List<string> ();    
             try
             {
+                string[] files = Directory.GetFiles(this.m_unZippingPath);
 
-
-                return list;
+                return list  =files.ToList();
             }
             catch (Exception ex)
             {
