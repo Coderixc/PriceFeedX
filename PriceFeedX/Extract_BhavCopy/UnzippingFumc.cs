@@ -21,18 +21,21 @@ namespace PriceFeedX.Extract_BhavCopy
 
         }
 
+
         private  string Load_All_Directory_which_contain_Bhavcopy()
         {
-            string result = string.Empty;   
+            List<string> List_BhavCopy_collectioin;   
             try
             {
 
-                return result;
+               this.Glob_all_Format(out List_BhavCopy_collectioin);
+
+                return "Sucessfully";
             }
             catch (Exception ex)
             {
 
-                return string.Empty;
+                return "failed to load";
 
             }
 
@@ -40,7 +43,25 @@ namespace PriceFeedX.Extract_BhavCopy
 
 
 
+        private List<string> Glob_all_Format(out List<string> list)
+        {
+            //Set Out parameters
+            list = new List<string> ();    
+            try
+            {
 
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                return new List<string>();
+
+            }
+
+
+        }
   
 
 
