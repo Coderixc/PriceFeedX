@@ -286,9 +286,6 @@ namespace PriceFeedX
 
         }
 
-
-
-
         //Create Txt files, to record last update
 
     }
