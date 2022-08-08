@@ -153,7 +153,6 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         }
         public void BulkImporter()
         {
-
             string[] yearList = new string[2] {"2021" , "2022" };
 
             string f1_Prefix = "cm";
@@ -166,8 +165,6 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                 {
                     count++;
                     string link = year + month;
-
-
                     int days = -1;
                     try
                     {
@@ -191,9 +188,6 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
                             if (this.ExtractRequesttillToday(year, count, day))
                                 break;
-
-
-
 
                             string twodigitdate = day.ToString();
                             if (day.ToString().Length == 1)
