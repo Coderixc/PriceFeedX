@@ -137,7 +137,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
         private bool ExtractRequesttillToday(string yyyy, int month, int day)
         {
-
+            
             DateTime dtnow = DateTime.Now;
 
             var date = new DateTime(Convert.ToInt32(yyyy), month, day);
@@ -184,7 +184,6 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
                             if (this.ExclueSaturday_Sunday(year, count, day)) 
                                 continue;
-
 
                             if (this.ExtractRequesttillToday(year, count, day))
                                 break;
