@@ -13,6 +13,7 @@ using CustomDataBase;
 using System.Reflection;
 using PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy;
 using PriceFeedX.Import_Bhav_Copy_NSE.ShowImportStatusToConsole_UserControl;
+using PriceFeedX.Extract_BhavCopy;
 
 namespace PriceFeedX
 {
@@ -23,6 +24,9 @@ namespace PriceFeedX
 
         private List<string> List_Symbol;
         private List<string> List_BhavCopy_Prev5;
+
+        private UnzippingFunc _UnzippingFunc;
+
 
 
         #endregion
@@ -38,6 +42,9 @@ namespace PriceFeedX
             string List5days = string.Join(",  ", this.List_BhavCopy_Prev5.ToArray());
 
             this.textBox1_BhavCopyLast5Date.Text = List5days;
+
+            //Initilize Unzipping Object
+            this._UnzippingFunc  = new UnzippingFunc();
         }
         #endregion
 
@@ -48,8 +55,6 @@ namespace PriceFeedX
                 //variable
                 this.List_Symbol = new List<string>();
                 this.List_BhavCopy_Prev5 = new List<string>();
-
-
 
 
 
