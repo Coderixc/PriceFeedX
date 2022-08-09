@@ -69,6 +69,7 @@ namespace PriceFeedX.Extract_BhavCopy
 
         private List<string> Glob(out List<string> list)
         {
+
             //Set Out parameters
             list = new List<string> ();    
             try
@@ -86,7 +87,32 @@ namespace PriceFeedX.Extract_BhavCopy
 
 
         }
-  
+
+
+        private List<string> Glob(out List<string> list, string location)
+        {
+
+      
+
+            //Set Out parameters
+            list = new List<string>();
+            try
+            {
+                string[] files = Directory.GetDirectories(location);
+
+                return list = files.ToList();
+            }
+            catch (Exception ex)
+            {
+
+                return new List<string>();
+
+            }
+
+
+        }
+
+
 
         private void ExtractAll(string path_with_filename,  string output)
         {
@@ -110,14 +136,14 @@ namespace PriceFeedX.Extract_BhavCopy
             string result = string.Empty;
             try
             {
-                List<string> List_BhavCopy_collectioin = new List<string>();
+                List<string> List_Directory_Present = new List<string>();
 
                 //Read path where all bhav copy ois located
-                this.Glob( out List_BhavCopy_collectioin);
+                this.Glob( out List_Directory_Present);
 
 
                 //Chec if curent direectory is Empty
-                if(List_BhavCopy_collectioin.Count == 0)
+                if(List_Directory_Present.Count == 0)
                 {
                     //Empty location  ---> return;
                 }
@@ -126,13 +152,20 @@ namespace PriceFeedX.Extract_BhavCopy
 
                     try
                     {
-                        for(int folder_idx= 0; folder_idx<  List_BhavCopy_collectioin.Count; folder_idx ++)
+                        for(int folder_idx= 0; folder_idx<  List_Directory_Present.Count; folder_idx ++)
                         {
 
-                            string loc = List_BhavCopy_collectioin.ElementAt(folder_idx);
+                            string loc = List_Directory_Present.ElementAt(folder_idx);
                             if(loc.Contains("NSE_")) //Compute folder ,Prefix By  "NSE_"
                             {
 
+                                //Generate path for individual bhav copy, where its is located 
+
+                                List<string> List_Bahv_Copy;
+
+                               // string _bhavcopypath = 
+
+                                this.Glob( out List_Bahv_Copy,loc);
 
                             }
                             else
