@@ -104,6 +104,26 @@ namespace PriceFeedX.Extract_BhavCopy
         }
 
 
+        // Method : Which will be  called by object , and This Method will trigger whole Unzippping Activitie  which is mentioned above
+        public string unziping_Main()
+        {
+            string result = string.Empty;
+            try
+            {
+                return result;
+
+            }
+            catch
+            {
+
+                return result;
+            }
+
+
+
+        }
+
+
 
     }
 }
