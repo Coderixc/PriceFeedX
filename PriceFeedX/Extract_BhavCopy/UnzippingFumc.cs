@@ -14,7 +14,8 @@ namespace PriceFeedX.Extract_BhavCopy
     sealed class UnzippingFunc
     {
 
-         private string m_unZippingPath = String .Empty;    
+         private string m_unZippingPath = String .Empty;
+         private string[] separators = { "cm","."};  //cm04JUL2022bhav
 
 
         public UnzippingFunc() //HOW TO GET WHICH FOLDER THE LAST FOLDER WHICH WAS USED TO IMPORTING BHAV COPY
@@ -98,7 +99,7 @@ namespace PriceFeedX.Extract_BhavCopy
             list = new List<string>();
             try
             {
-                string[] files = Directory.GetDirectories(location);
+                string[] files = Directory.GetFiles(location);  //.\1_Dump_BhavCopy\NSE_2022_08_08\cm04JUL2022bhav.csv.zip
 
                 return list = files.ToList();
             }
@@ -166,6 +167,26 @@ namespace PriceFeedX.Extract_BhavCopy
                                // string _bhavcopypath = 
 
                                 this.Glob( out List_Bahv_Copy,loc);
+
+                                //Check is no bhav copy present
+                                if(List_Bahv_Copy.Count == 0)
+                                {
+                                    continue;
+                                }
+
+                                //Extract folder wich is present on path location List_Bahv_Copy
+
+                                for (int i  = 0; i < List_Bahv_Copy.Count; i++)
+                                {
+                                    string zipfolder = List_Bahv_Copy.ElementAt(i);
+                                    //set Output files
+                                    string[] splitpath = zipfolder.Split(this.separators,StringSplitOptions.None); //.\1_Dump_BhavCopy\NSE_2022_08_08\cm04JUL2022bhav.csv.zip
+
+                                    //Create Output folder with Prefix ""  -- will decide
+
+                                                                    //this.ExtractAll(zipfolder,);
+
+                                }
 
                             }
                             else
