@@ -75,7 +75,7 @@ namespace PriceFeedX.Extract_BhavCopy
             list = new List<string> ();    
             try
             {
-                string[] files = Directory.GetDirectories(this.m_unZippingPath);
+                string[] files = Directory.GetDirectories(this.m_unZippingPath );
 
                 return list  =files.ToList();
             }
@@ -99,7 +99,7 @@ namespace PriceFeedX.Extract_BhavCopy
             list = new List<string>();
             try
             {
-                string[] files = Directory.GetFiles(location);  //.\1_Dump_BhavCopy\NSE_2022_08_08\cm04JUL2022bhav.csv.zip
+                string[] files = Directory.GetFiles(location, "*.zip");  //.\1_Dump_BhavCopy\NSE_2022_08_08\cm04JUL2022bhav.csv.zip
 
                 return list = files.ToList();
             }
@@ -184,7 +184,9 @@ namespace PriceFeedX.Extract_BhavCopy
 
                                     //Create Output folder with Prefix ""  -- will decide
 
-                                                                    //this.ExtractAll(zipfolder,);
+                                    string outpath = splitpath[1]+ splitpath[2];
+
+                                    this.ExtractAll(zipfolder,);
 
                                 }
 
