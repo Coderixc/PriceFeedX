@@ -112,9 +112,6 @@ namespace PriceFeedX.Extract_BhavCopy
 
 
         }
-
-
-
         private void ExtractAll(string path_with_filename,  string output)
         {
             try

@@ -217,18 +217,16 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             if(!File.Exists(Outputwithfolder))
                             {
                                 webClient.DownloadFileAsync(uri_t, Outputwithfolder);
-                                string messg = "Importing Bhav Copy :" + twodigitdate + "/" + month + "/" + year + "| Bhav Copy:" + outputfolder;
+                                string messg = "Importing Bhav Copy :" + twodigitdate + "/" + month + "/" + year + " | Bhav Copy:" + outputfolder;
                                 Queue_Progress.Enqueue(messg);
 
                             }
                             else
                             {
-                                string messg = "Duplicate Bhav Copy :" + twodigitdate + "/" + month + "/" + year + "| Bhav Copy:" + outputfolder;
+                                string messg = "Duplicate Bhav Copy :" + twodigitdate + "/" + month + "/" + year + " | Bhav Copy:" + outputfolder;
                                 Queue_Progress.Enqueue(messg);
                             }
                             
-
-
 
 
                             // Present Status in GUI
