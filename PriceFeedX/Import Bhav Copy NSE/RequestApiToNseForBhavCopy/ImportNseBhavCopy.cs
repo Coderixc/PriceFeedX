@@ -137,6 +137,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
         private bool ExtractRequesttillToday(string yyyy, int month, int day)
         {
+
             
             DateTime dtnow = DateTime.Now;
 
