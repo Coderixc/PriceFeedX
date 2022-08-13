@@ -117,7 +117,6 @@ namespace PriceFeedX.Extract_BhavCopy
         {
             try
             {
-                //FileStream compressedFileStream = File.Open(path_with_filename, FileMode.Open);
 
 
                 if(File.Exists(output))
@@ -125,58 +124,13 @@ namespace PriceFeedX.Extract_BhavCopy
                     File.Delete(output);
                 }
 
-                //var bytes = File.ReadAllBytes(path_with_filename);
-                //using (FileStream fs = new FileStream(output, FileMode.CreateNew))
-                //using (GZipStream zipStream = new GZipStream(fs, CompressionMode.Decompress, false))
-                //{
-                //    zipStream.Write(bytes, 0, bytes.Length);
-                //}
 
-                ////using (GZipStream zipStream = new GZipStream(fs, CompressionMode.Compress, false))
-                ////{
-                ////    zipStream.Write(bytes, 0, bytes.Length);
-                ////}
-
-
-                //FileStream outputFileStream = File.Create(output);  //Issue
-                //var decompressor = new GZipStream(compressedFileStream, CompressionMode.Decompress);
-                //decompressor.CopyTo(outputFileStream);
-
-                //D:\Project\PriceFeedX\PriceFeedX\PriceFeedX\bin\Debug\1_Dump_BhavCopy\NSE_2022_08_08\cm01APR2021bhav.csv.zip
-
-                //FileStream fs = File.OpenRead(path_with_filename);
-
-                //byte[] buf = new byte[1024];
-                //string result = String.Empty;
-                //int c;
-
-                //while ((c = fs.Read(buf, 0, buf.Length)) > 0)
-                //{
-                //    Console.WriteLine(Encoding.UTF8.GetString(buf, 0, c));
-
-                //    result += Encoding.UTF8.GetString(buf, 0, c);
-                //}
-
-
-
-                //FileStream compressedFileStream = File.Open(path_with_filename, FileMode.Open);
-                // FileStream outputFileStream = File.Create(output);
-                // var decompressor = new GZipStream(compressedFileStream, CompressionMode.Decompress,false);
-                //decompressor.CopyTo(outputFileStream);
-
-                //String ZipPath = @"c:\my\data.zip";
-                //String extractPath = @"d:\\myunzips";
                 ZipFile.ExtractToDirectory(path_with_filename, output);
 
-                //
-                //
-                //ZipFile.Extract
-
-
             }
-            catch
+            catch(Exception ex)
             {
-
+                //TODO : Exception ocuured In Zipfile "ExtractToDirectory";
             }
         }
 
