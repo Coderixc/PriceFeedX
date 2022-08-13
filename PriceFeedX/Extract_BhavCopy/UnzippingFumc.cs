@@ -149,12 +149,12 @@ namespace PriceFeedX.Extract_BhavCopy
                 string result = String.Empty;
                 int c;
 
-                while ((c = fs.Read(buf, 0, buf.Length)) > 0)
-                {
-                    Console.WriteLine(Encoding.UTF8.GetString(buf, 0, c));
+                //while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                //{
+                //    Console.WriteLine(Encoding.UTF8.GetString(buf, 0, c));
 
-                   result += Encoding.UTF8.GetString(buf, 0, c);
-                }
+                //   result += Encoding.UTF8.GetString(buf, 0, c);
+                //}
 
 
 
