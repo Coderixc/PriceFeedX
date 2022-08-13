@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.IO.Compression;
 
+
 using PriceFeedX.Import_Bhav_Copy_NSE;
 namespace PriceFeedX.Extract_BhavCopy
 {
@@ -149,19 +150,26 @@ namespace PriceFeedX.Extract_BhavCopy
                 string result = String.Empty;
                 int c;
 
-                //while ((c = fs.Read(buf, 0, buf.Length)) > 0)
-                //{
-                //    Console.WriteLine(Encoding.UTF8.GetString(buf, 0, c));
+                while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                {
+                    Console.WriteLine(Encoding.UTF8.GetString(buf, 0, c));
 
-                //   result += Encoding.UTF8.GetString(buf, 0, c);
-                //}
+                    result += Encoding.UTF8.GetString(buf, 0, c);
+                }
 
 
 
-                FileStream compressedFileStream = File.Open(path_with_filename, FileMode.Open);
-                 FileStream outputFileStream = File.Create(output);
-                 var decompressor = new GZipStream(compressedFileStream, CompressionMode.Decompress,false);
-                decompressor.CopyTo(outputFileStream);
+                //FileStream compressedFileStream = File.Open(path_with_filename, FileMode.Open);
+                // FileStream outputFileStream = File.Create(output);
+                // var decompressor = new GZipStream(compressedFileStream, CompressionMode.Decompress,false);
+                //decompressor.CopyTo(outputFileStream);
+
+                System.IO.Compression.
+
+               //
+               //
+               //ZipFile.Extract
+
 
             }
             catch
