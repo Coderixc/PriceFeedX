@@ -144,18 +144,18 @@ namespace PriceFeedX.Extract_BhavCopy
 
                 //D:\Project\PriceFeedX\PriceFeedX\PriceFeedX\bin\Debug\1_Dump_BhavCopy\NSE_2022_08_08\cm01APR2021bhav.csv.zip
 
-                FileStream fs = File.OpenRead(path_with_filename);
+                //FileStream fs = File.OpenRead(path_with_filename);
 
-                byte[] buf = new byte[1024];
-                string result = String.Empty;
-                int c;
+                //byte[] buf = new byte[1024];
+                //string result = String.Empty;
+                //int c;
 
-                while ((c = fs.Read(buf, 0, buf.Length)) > 0)
-                {
-                    Console.WriteLine(Encoding.UTF8.GetString(buf, 0, c));
+                //while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                //{
+                //    Console.WriteLine(Encoding.UTF8.GetString(buf, 0, c));
 
-                    result += Encoding.UTF8.GetString(buf, 0, c);
-                }
+                //    result += Encoding.UTF8.GetString(buf, 0, c);
+                //}
 
 
 
@@ -164,11 +164,13 @@ namespace PriceFeedX.Extract_BhavCopy
                 // var decompressor = new GZipStream(compressedFileStream, CompressionMode.Decompress,false);
                 //decompressor.CopyTo(outputFileStream);
 
-                System.IO.Compression.
+                //String ZipPath = @"c:\my\data.zip";
+                //String extractPath = @"d:\\myunzips";
+                ZipFile.ExtractToDirectory(path_with_filename, output);
 
-               //
-               //
-               //ZipFile.Extract
+                //
+                //
+                //ZipFile.Extract
 
 
             }
