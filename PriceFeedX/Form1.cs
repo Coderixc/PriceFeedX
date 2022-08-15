@@ -14,6 +14,7 @@ using System.Reflection;
 using PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy;
 using PriceFeedX.Import_Bhav_Copy_NSE.ShowImportStatusToConsole_UserControl;
 using PriceFeedX.Extract_BhavCopy;
+using PriceFeedX.FolderStats;
 
 namespace PriceFeedX
 {
@@ -299,8 +300,13 @@ namespace PriceFeedX
             //Present All Folder Which contain all Bhav copy
 
             //Tree view 
+            Form1_Folder_Stats _FolderStats = new Form1_Folder_Stats();   
 
             //DataGridView
+
+
+            //visualize Form
+            _FolderStats.ShowDialog();  
 
         }
 

@@ -94,6 +94,12 @@
     <Compile Include="DataBase\DataBase.cs" />
     <Compile Include="DataBase\DbUser.cs" />
     <Compile Include="Extract_BhavCopy\UnzippingFumc.cs" />
+    <Compile Include="FolderStats\Form1_Folder_Stats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderStats\Form1_Folder_Stats.Designer.cs">
+      <DependentUpon>Form1_Folder_Stats.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     <Compile Include="LoadSymbolFromFiles\ReadFileFromNSE.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FolderStats\Form1_Folder_Stats.resx">
+      <DependentUpon>Form1_Folder_Stats.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
