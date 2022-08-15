@@ -63,7 +63,7 @@
             this.panel2_BHavCopyPanel.Controls.Add(this.textBox1_BHAVCOPY_EQ);
             this.panel2_BHavCopyPanel.Controls.Add(this.label2);
             this.panel2_BHavCopyPanel.Location = new System.Drawing.Point(0, 56);
-            this.panel2_BHavCopyPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2_BHavCopyPanel.Margin = new System.Windows.Forms.Padding(2);
             this.panel2_BHavCopyPanel.Name = "panel2_BHavCopyPanel";
             this.panel2_BHavCopyPanel.Size = new System.Drawing.Size(795, 146);
             this.panel2_BHavCopyPanel.TabIndex = 1;
@@ -99,7 +99,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(710, 28);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(61, 20);
             this.button2.TabIndex = 2;
@@ -110,7 +110,7 @@
             // textBox1_BHAVCOPY_EQ
             // 
             this.textBox1_BHAVCOPY_EQ.Location = new System.Drawing.Point(151, 28);
-            this.textBox1_BHAVCOPY_EQ.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1_BHAVCOPY_EQ.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1_BHAVCOPY_EQ.Name = "textBox1_BHAVCOPY_EQ";
             this.textBox1_BHAVCOPY_EQ.Size = new System.Drawing.Size(544, 20);
             this.textBox1_BHAVCOPY_EQ.TabIndex = 1;
@@ -133,7 +133,7 @@
             this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.textBox1_Nse_TOP_XX_LIST);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Controls.Add(this.Label_BHAVCOPYPATH);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Location = new System.Drawing.Point(0, 206);
-            this.panel3_LOAD_BHAVCOPY_TOPXX.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3_LOAD_BHAVCOPY_TOPXX.Margin = new System.Windows.Forms.Padding(2);
             this.panel3_LOAD_BHAVCOPY_TOPXX.Name = "panel3_LOAD_BHAVCOPY_TOPXX";
             this.panel3_LOAD_BHAVCOPY_TOPXX.Size = new System.Drawing.Size(795, 97);
             this.panel3_LOAD_BHAVCOPY_TOPXX.TabIndex = 2;
@@ -200,7 +200,7 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.label5_AuTODownload);
             this.panel2.Location = new System.Drawing.Point(3, 390);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(791, 32);
             this.panel2.TabIndex = 4;
@@ -208,7 +208,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(532, 6);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(127, 24);
             this.button4.TabIndex = 2;
@@ -220,9 +220,9 @@
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(676, 6);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 21);
+            this.button3.Size = new System.Drawing.Size(110, 24);
             this.button3.TabIndex = 1;
             this.button3.Text = "Running Status";
             this.button3.UseVisualStyleBackColor = true;
@@ -245,7 +245,7 @@
             // 
             this.panel3_Progressbar.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel3_Progressbar.Location = new System.Drawing.Point(0, 433);
-            this.panel3_Progressbar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3_Progressbar.Margin = new System.Windows.Forms.Padding(2);
             this.panel3_Progressbar.Name = "panel3_Progressbar";
             this.panel3_Progressbar.Size = new System.Drawing.Size(793, 254);
             this.panel3_Progressbar.TabIndex = 5;
@@ -260,7 +260,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3_LOAD_BHAVCOPY_TOPXX);
             this.Controls.Add(this.panel2_BHavCopyPanel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "NSE BHAV COPY 1.0.1";
             this.panel2_BHavCopyPanel.ResumeLayout(false);
