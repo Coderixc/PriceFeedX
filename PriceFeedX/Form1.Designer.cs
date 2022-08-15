@@ -47,6 +47,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label5_AuTODownload = new System.Windows.Forms.Label();
             this.panel3_Progressbar = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel2_BHavCopyPanel.SuspendLayout();
             this.panel3_LOAD_BHAVCOPY_TOPXX.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -178,16 +179,16 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(0, 3);
+            this.panel1.Location = new System.Drawing.Point(0, -7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 48);
+            this.panel1.Size = new System.Drawing.Size(794, 58);
             this.panel1.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(300, 24);
+            this.label4.Location = new System.Drawing.Point(297, 16);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(196, 19);
             this.label4.TabIndex = 0;
@@ -196,6 +197,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.label5_AuTODownload);
@@ -250,6 +252,17 @@
             this.panel3_Progressbar.Size = new System.Drawing.Size(793, 254);
             this.panel3_Progressbar.TabIndex = 5;
             // 
+            // button5
+            // 
+            this.button5.AutoSize = true;
+            this.button5.Location = new System.Drawing.Point(158, 5);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(90, 23);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "Folder Stat";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,6 +308,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel3_Progressbar;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 
