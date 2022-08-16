@@ -306,6 +306,7 @@ namespace PriceFeedX
 
 
             //visualize Form
+
             _FolderStats.ShowDialog();  
 
         }
