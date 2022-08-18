@@ -31,9 +31,11 @@
             this.panel1_lower = new System.Windows.Forms.Panel();
             this.panel1_upper = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel1_lower.SuspendLayout();
             this.panel1_upper.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,9 +62,20 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
             this.splitContainer1.Size = new System.Drawing.Size(495, 314);
             this.splitContainer1.SplitterDistance = 165;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(3, 3);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(159, 308);
+            this.treeView1.TabIndex = 0;
             // 
             // Form1_Folder_Stats
             // 
@@ -74,6 +87,7 @@
             this.Text = "Form1_Folder_Stats";
             this.panel1_lower.ResumeLayout(false);
             this.panel1_upper.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -85,5 +99,6 @@
         private System.Windows.Forms.Panel panel1_lower;
         private System.Windows.Forms.Panel panel1_upper;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
