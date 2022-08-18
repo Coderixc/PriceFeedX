@@ -16,5 +16,20 @@ namespace PriceFeedX.FolderStats
         {
             InitializeComponent();
         }
+
+        //Partial Main
+        //1. Load All folder in Current Directory
+        //2. Locate Path in GUi if Required
+        public  void _main()
+        {
+
+
+        }
+
+       private void Locate_Directory()
+        {
+            
+        }
+
     }
 }
