@@ -114,7 +114,7 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mTIMESTAMP].ToString() + "',"
 
                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mOPEN].ToString() + "',"
-                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mHIGH].ToString() + "',"
+                                               + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mHIGH].ToString() + "',"
                                                  + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mLOW].ToString() + "',"
 
                                                + "'" + this.dt_Bhav_copy.Rows[i][TABLE_NSE_BHAVCOPY.mCLOSE].ToString() + "',"
