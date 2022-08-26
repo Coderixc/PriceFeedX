@@ -69,7 +69,7 @@ namespace PriceFeedX.Extract_BhavCopy
 
 
 
-        private List<string> Glob(out List<string> list)
+        public List<string> Glob(out List<string> list)
         {
 
             //Set Out parameters
