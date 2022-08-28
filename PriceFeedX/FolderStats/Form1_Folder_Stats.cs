@@ -68,9 +68,14 @@ namespace PriceFeedX.FolderStats
 
 
 
-                    }
+                        //sub node
 
-   
+
+
+                    }
+                   // LoadSubDirectories(file, workingNode);
+
+
                 }
 
 
@@ -81,6 +86,27 @@ namespace PriceFeedX.FolderStats
 
             }
 
+        }
+
+
+        private void LoadSubDirectories(string dir, TreeNode td)
+        {
+            // Get all subdirectories  
+            string[] subdirectoryEntries = Directory.GetFiles(dir, "*.zip");
+            // Loop through them to see if they have any other subdirectories  
+            foreach (string subdirectory in subdirectoryEntries)
+            {
+
+                DirectoryInfo di = new DirectoryInfo(subdirectory);
+                TreeNode tds = td.Nodes.Add(di.Name);
+                tds.StateImageIndex = 0;
+                tds.Tag = di.FullName;
+
+                //List<string> List_SubFolder;
+                //this.UnzipObj.Glob(out List_SubFolder, dir);
+
+
+            }
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)

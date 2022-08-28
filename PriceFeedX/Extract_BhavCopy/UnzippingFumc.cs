@@ -91,7 +91,7 @@ namespace PriceFeedX.Extract_BhavCopy
         }
 
 
-        private List<string> Glob(out List<string> list, string location)
+        public List<string> Glob(out List<string> list, string location)
         {
 
       
