@@ -40,6 +40,7 @@ namespace PriceFeedX.FolderStats
         {
 
             List<string> ListRootFolderList;
+
             this.UnzipObj.Glob(out ListRootFolderList);
             AddListToTreeNode(ListRootFolderList);
 
