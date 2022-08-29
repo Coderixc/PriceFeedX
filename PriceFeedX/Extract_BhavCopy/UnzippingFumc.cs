@@ -158,14 +158,82 @@ namespace PriceFeedX.Extract_BhavCopy
             }
         }
 
+        private void ProcessExtractAllOneByOne(List<string> ListMultipleFolder,int IdxNo)
+        {
+
+            try
+            {
+
+
+                string loc = ListMultipleFolder.ElementAt(IdxNo);
+                if (loc.Contains("NSE_")) //Compute folder ,Prefix By  "NSE_"
+                {
+
+                    //Generate path for individual bhav copy, where its is located 
+
+
+                    List<string> List_Bahv_Copy;
+
+                    // string _bhavcopypath = 
+
+                    this.Glob(out List_Bahv_Copy, loc);
+
+                    //Check is no bhav copy present
+                    if (List_Bahv_Copy.Count == 0)
+                    {
+                        return;
+
+                    }
+
+                    //Extract folder wich is present on path location List_Bahv_Copy
+
+                    for (int i = 0; i < List_Bahv_Copy.Count; i++)
+                    {
+                        string zipfolder = List_Bahv_Copy.ElementAt(i);
+                        //set Output files
+                        string[] splitpath = zipfolder.Split(this.separators, StringSplitOptions.None); //.\1_Dump_BhavCopy\NSE_2022_08_08\cm04JUL2022bhav.csv.zip
+
+                        //Create Output folder with Prefix ""  -- will decide
+
+                        string outpath = "." + splitpath[1] + "cm_" + splitpath[2] + ".csv";
+
+                        this.ExtractAll(zipfolder, outpath);
+
+                    }
+
+                }
+                else
+                {
+                    // Ignore this folder path;
+                }
+
+
+
+
+
+
+            }
+            catch {
+            //TODO : Failed to Extract Indivual Folder
+            }
+
+
+        }
 
 
 
 
         // Method : Which will be  called by object , and This Method will trigger whole Unzippping Activitie  which is mentioned above
-        public string unziping_Main()
+        public string unziping_Main(int ListIndex = -1)
         {
             string result = string.Empty;
+
+            int index = 0;
+            if(ListIndex != -1)
+            {
+                index = ListIndex;  
+            }
+
             try
             {
                 List<string> List_Directory_Present = new List<string>();
@@ -187,11 +255,15 @@ namespace PriceFeedX.Extract_BhavCopy
                         for(int folder_idx= 0; folder_idx<  List_Directory_Present.Count; folder_idx ++)
                         {
 
+                            ProcessExtractAllOneByOne(List_Directory_Present, folder_idx);
+                           /*
+
                             string loc = List_Directory_Present.ElementAt(folder_idx);
-                            if(loc.Contains("NSE_")) //Compute folder ,Prefix By  "NSE_"
+                            if(loc.Contains("NSE_")  ) //Compute folder ,Prefix By  "NSE_"
                             {
 
                                 //Generate path for individual bhav copy, where its is located 
+
 
                                 List<string> List_Bahv_Copy;
 
@@ -228,6 +300,8 @@ namespace PriceFeedX.Extract_BhavCopy
                                 // Ignore this folder path;
                             }
 
+
+                            */
 
                         }
 

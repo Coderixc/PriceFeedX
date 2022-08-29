@@ -131,7 +131,7 @@ namespace PriceFeedX.FolderStats
         {
             try
             {
-                //this.UnzipObj.unziping_Main();
+                this.UnzipObj.unziping_Main(IndexSelected);
             }
             catch { }
 
