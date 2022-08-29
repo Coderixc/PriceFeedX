@@ -138,6 +138,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CustomDataBase.Credential.datasource" />
+    <None Include="Properties\DataSources\CustomDataBase.DataBase.datasource" />
+    <None Include="Properties\DataSources\CustomDataBase.DbUser.datasource" />
+    <None Include="Properties\DataSources\Form1.datasource" />
+    <None Include="Properties\DataSources\InsertSymbolToDB.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.Extract_BhavCopy.UnzippingFunc.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.FolderStats.Form1_Folder_Stats.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.Import_Bhav_Copy_NSE.DumpFolder.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy.ImportNseBhavCopy.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.Import_Bhav_Copy_NSE.ShowImportStatusToConsole_UserControl.MessageBox_Show_UserControl.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.InsertBhavCopyPriceToDB.InsertBhavCopyPrice.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.InsertBhavCopyPriceToDB.TABLE_NSE_BHAVCOPY.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.LoadSymbolFromFiles.NSE_EQ_BHAVCOPY.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.LoadSymbolFromFiles.NSE_TOP_XX_SYMBOLLIST.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.LoadSymbolFromFiles.ReadFileFromNSE_EQUITY.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\PriceFeedX.Properties.Settings.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

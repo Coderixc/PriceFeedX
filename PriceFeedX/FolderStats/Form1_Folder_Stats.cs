@@ -112,13 +112,15 @@ namespace PriceFeedX.FolderStats
            TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
 
             // Set a ToolTip only if the mouse pointer is actually paused on a node.  
-            if (theNode != null   && theNode.Index > -1)
+
+            
+            if (theNode != null   && theNode.Text.Contains("NSE_"))
             {
                 string dir = DumpFolder.Dump_Path + @"\"+ theNode.Text.ToString();
 
                 TreeNode MyTreeView  =(treeView1.SelectedNode);
 
-                ExtractAllfromSelectedDirectory(dir, theNode.Index-1);
+                ExtractAllfromSelectedDirectory(dir, theNode.Index);
 
 
             }
@@ -128,6 +130,13 @@ namespace PriceFeedX.FolderStats
             }
 
         }
+
+        //Read All Folder which is Extracted
+        private void ExtractedFolder()
+        {
+
+        }
+
         private void ExtractAllfromSelectedDirectory(string DirectoryHeadern,Int32 IndexSelected)
         {
             try
@@ -139,6 +148,9 @@ namespace PriceFeedX.FolderStats
 
         }
 
+        private void progressBar1_AutoInsert_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
