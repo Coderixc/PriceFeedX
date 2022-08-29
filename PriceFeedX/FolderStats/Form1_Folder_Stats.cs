@@ -40,7 +40,6 @@ namespace PriceFeedX.FolderStats
         {
 
             List<string> ListRootFolderList;
-
             this.UnzipObj.Glob(out ListRootFolderList);
             AddListToTreeNode(ListRootFolderList);
 
@@ -50,60 +49,51 @@ namespace PriceFeedX.FolderStats
         {
             try
             {
-                TreeNode root = treeView1.Nodes.Add("Items");
+                TreeNode root = treeView1.Nodes.Add("Directory");
                 TreeNode workingNode = root;
 
+                int idx = 0;
 
                 foreach (string file in ListInput)
                 {
                     if (file.Contains("NSE_"))
                     {
                         //.\1_Dump_BhavCopy\NSE_2022_08_04
-
-
-                        string [] files = file.Split(separators, StringSplitOptions.None);    
-
-
-                        treeView1.Nodes.Add(files[3]);
-
-
-
-                        //sub node
-
-
-
+                        string [] files = file.Split(separators, StringSplitOptions.None);
+                        this.treeView1.Nodes.Add(files[3]);
+                        string dir = DumpFolder.Dump_Path + @"\" + files[3].ToString();
+                        LoadSubDirectories(dir, this.treeView1, idx);
+                        idx++;
                     }
-                   // LoadSubDirectories(file, workingNode);
-
 
                 }
-
-
 
             }
             catch (Exception ex)
             {
-
+            //TODO
             }
 
         }
 
 
-        private void LoadSubDirectories(string dir, TreeNode td)
+        private void LoadSubDirectories(string dir, TreeView TreeV,int IDX_InsertSubNode)
         {
             // Get all subdirectories  
             string[] subdirectoryEntries = Directory.GetFiles(dir, "*.zip");
             // Loop through them to see if they have any other subdirectories  
             foreach (string subdirectory in subdirectoryEntries)
             {
+                try
+                {
+                    DirectoryInfo di = new DirectoryInfo(subdirectory);
 
-                DirectoryInfo di = new DirectoryInfo(subdirectory);
-                TreeNode tds = td.Nodes.Add(di.Name);
-                tds.StateImageIndex = 0;
-                tds.Tag = di.FullName;
-
-                //List<string> List_SubFolder;
-                //this.UnzipObj.Glob(out List_SubFolder, dir);
+                    TreeV.Nodes[IDX_InsertSubNode].Nodes.Add(di.Name);
+                }
+                catch
+                {
+                    //Failed To add Sub Node iN Main Root
+                }
 
 
             }
@@ -111,6 +101,29 @@ namespace PriceFeedX.FolderStats
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+
+        }
+
+        private void treeView1_MouseClick(object sender, MouseEventArgs e)
+        {
+
+
+            // Get the node at the current mouse pointer location.  
+           TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
+
+            // Set a ToolTip only if the mouse pointer is actually paused on a node.  
+            if (theNode != null   && theNode.Tag != null)
+            {
+                string dir = DumpFolder.Dump_Path + @"\"+ theNode.Text.ToString();  
+               // LoadSubDirectories(dir);
+                // this.treeView1.Nodes.Add();
+
+
+            }
+            else     // Pointer is not over a node so clear the ToolTip.  
+            {
+               // this.toolTip1.SetToolTip(this.treeView1, "");
+            }
 
         }
     }
