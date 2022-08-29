@@ -32,10 +32,12 @@
             this.panel1_upper = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.panel1_FileProperties = new System.Windows.Forms.Panel();
             this.panel1_lower.SuspendLayout();
             this.panel1_upper.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,12 +68,17 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.panel1_FileProperties);
             this.splitContainer1.Size = new System.Drawing.Size(495, 314);
             this.splitContainer1.SplitterDistance = 165;
             this.splitContainer1.TabIndex = 0;
             // 
             // treeView1
             // 
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Tai Le", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(159, 308);
@@ -79,6 +86,15 @@
             this.treeView1.Tag = "Items";
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
+            // 
+            // panel1_FileProperties
+            // 
+            this.panel1_FileProperties.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1_FileProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel1_FileProperties.Location = new System.Drawing.Point(12, 15);
+            this.panel1_FileProperties.Name = "panel1_FileProperties";
+            this.panel1_FileProperties.Size = new System.Drawing.Size(300, 97);
+            this.panel1_FileProperties.TabIndex = 0;
             // 
             // Form1_Folder_Stats
             // 
@@ -91,6 +107,7 @@
             this.panel1_lower.ResumeLayout(false);
             this.panel1_upper.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -103,5 +120,6 @@
         private System.Windows.Forms.Panel panel1_upper;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Panel panel1_FileProperties;
     }
 }

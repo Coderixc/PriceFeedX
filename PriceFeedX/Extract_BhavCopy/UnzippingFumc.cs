@@ -76,15 +76,39 @@ namespace PriceFeedX.Extract_BhavCopy
             list = new List<string> ();    
             try
             {
-                string[] files = Directory.GetDirectories(this.m_unZippingPath );
+                string[] files = Directory.GetDirectories(this.m_unZippingPath  );
 
-                return list  =files.ToList();
+                return list = RemoveUnwantedFolder(files);// files.ToList();
             }
             catch (Exception ex)
             {
 
                 return new List<string>();
 
+            }
+
+
+        }
+
+
+        private List<String> RemoveUnwantedFolder(string  [] Inputfiles)
+        {
+            List<string> files = new List<string>();
+            try
+            {
+                for(int i = 0; i < Inputfiles.Length; i++)
+                {
+                    if(Inputfiles[i].Contains("NSE_"))
+                    {
+                        files.Add(Inputfiles[i]);
+                    }
+                }
+
+                return files;
+            }
+            catch
+            {
+                return new List<string>(); ;
             }
 
 
@@ -113,7 +137,7 @@ namespace PriceFeedX.Extract_BhavCopy
 
 
         }
-        private void ExtractAll(string path_with_filename,  string output)
+        public void ExtractAll(string path_with_filename,  string output)
         {
             try
             {

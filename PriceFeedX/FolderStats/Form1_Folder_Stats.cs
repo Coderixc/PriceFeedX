@@ -63,9 +63,9 @@ namespace PriceFeedX.FolderStats
                         this.treeView1.Nodes.Add(files[3]);
                         string dir = DumpFolder.Dump_Path + @"\" + files[3].ToString();
                         LoadSubDirectories(dir, this.treeView1, idx);
-                        idx++;
-                    }
 
+                    }
+                    idx++;
                 }
 
             }
@@ -112,11 +112,12 @@ namespace PriceFeedX.FolderStats
            TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
 
             // Set a ToolTip only if the mouse pointer is actually paused on a node.  
-            if (theNode != null   && theNode.Tag != null)
+            if (theNode != null   && theNode.Index > 0)
             {
-                string dir = DumpFolder.Dump_Path + @"\"+ theNode.Text.ToString();  
-               // LoadSubDirectories(dir);
-                // this.treeView1.Nodes.Add();
+                string dir = DumpFolder.Dump_Path + @"\"+ theNode.Text.ToString();
+
+
+                ExtractAllfromSelectedDirectory(dir, theNode.Index);
 
 
             }
@@ -126,5 +127,17 @@ namespace PriceFeedX.FolderStats
             }
 
         }
+        private void ExtractAllfromSelectedDirectory(string DirectoryHeadern,Int32 IndexSelected)
+        {
+            try
+            {
+                //this.UnzipObj.unziping_Main();
+            }
+            catch { }
+
+
+        }
+
+
     }
 }
