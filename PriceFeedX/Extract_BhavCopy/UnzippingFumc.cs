@@ -252,10 +252,10 @@ namespace PriceFeedX.Extract_BhavCopy
 
                     try
                     {
-                        for(int folder_idx= 0; folder_idx<  List_Directory_Present.Count; folder_idx ++)
+                        //for(int folder_idx= 0; folder_idx<  List_Directory_Present.Count; folder_idx ++)
                         {
 
-                            ProcessExtractAllOneByOne(List_Directory_Present, folder_idx);
+                            ProcessExtractAllOneByOne(List_Directory_Present, index);
                            /*
 
                             string loc = List_Directory_Present.ElementAt(folder_idx);

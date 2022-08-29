@@ -49,10 +49,10 @@ namespace PriceFeedX.FolderStats
         {
             try
             {
-                TreeNode root = treeView1.Nodes.Add("Directory");
-                TreeNode workingNode = root;
+                treeView1.Nodes.Add("Directory");
+                //TreeNode workingNode = root;
 
-                int idx = 0;
+                int idx = 1;
 
                 foreach (string file in ListInput)
                 {
@@ -112,12 +112,13 @@ namespace PriceFeedX.FolderStats
            TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
 
             // Set a ToolTip only if the mouse pointer is actually paused on a node.  
-            if (theNode != null   && theNode.Index > 0)
+            if (theNode != null   && theNode.Index > -1)
             {
                 string dir = DumpFolder.Dump_Path + @"\"+ theNode.Text.ToString();
 
+                TreeNode MyTreeView  =(treeView1.SelectedNode);
 
-                ExtractAllfromSelectedDirectory(dir, theNode.Index);
+                ExtractAllfromSelectedDirectory(dir, theNode.Index-1);
 
 
             }
