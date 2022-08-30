@@ -122,6 +122,9 @@ namespace PriceFeedX.FolderStats
 
                 ExtractAllfromSelectedDirectory(dir, theNode.Index);
 
+                List<string> ListFolder;
+                ExtractedFolder(dir , out ListFolder);
+
 
             }
             else     // Pointer is not over a node so clear the ToolTip.  
@@ -132,8 +135,57 @@ namespace PriceFeedX.FolderStats
         }
 
         //Read All Folder which is Extracted
-        private void ExtractedFolder()
+        private void ExtractedFolder(string InputDirectoryPath, out  List<string>  List_Extracted_BhavCopyFolder)
         {
+            List_Extracted_BhavCopyFolder = new List<string>();
+            try
+            {
+                List_Extracted_BhavCopyFolder = Directory.GetDirectories(InputDirectoryPath).Where (f => f.Contains("*.Zip") == false).ToList();
+
+                PopulateDatagridView(List_Extracted_BhavCopyFolder);
+            }
+            catch
+            {
+                //TODO: Fialed TO Extract all folder
+            }
+
+        }
+
+        private void PopulateDatagridView(List<string> ListInput)
+        {
+            try
+            {
+                dataGridView1_direc.Rows.Clear();
+                dataGridView1_direc.DataSource = List2DataTable(ListInput);
+               // dataGridView1_direc.DataSource = ListInput.ToArray();   
+            }
+            catch
+            {
+                //TODO: Fialed To Add List TO Dgv
+            }
+
+        }
+
+        private DataTable List2DataTable(List<string> ListInput )
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Extracted Folder");
+            try
+            {
+                for (int i = 0; i < ListInput.Count; i++)
+                {
+                    DirectoryInfo di = new DirectoryInfo(ListInput[i]);
+
+                    dt.Rows.Add(di.Name);
+
+                }
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+                    }
 
         }
 
