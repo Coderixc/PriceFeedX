@@ -142,7 +142,10 @@ namespace PriceFeedX.FolderStats
             {
                 List_Extracted_BhavCopyFolder = Directory.GetDirectories(InputDirectoryPath).Where (f => f.Contains("*.Zip") == false).ToList();
 
-                PopulateDatagridView(List_Extracted_BhavCopyFolder);
+                List<string> List_Zipped_BhavCopyFolder = new List<string>();
+                List_Zipped_BhavCopyFolder = Directory.GetDirectories(InputDirectoryPath).Where(f => f.Contains("*.Zip") == true).ToList();
+
+                PopulateDatagridView(List_Extracted_BhavCopyFolder, List_Zipped_BhavCopyFolder);
             }
             catch
             {
@@ -151,12 +154,12 @@ namespace PriceFeedX.FolderStats
 
         }
 
-        private void PopulateDatagridView(List<string> ListInput)
+        private void PopulateDatagridView(List<string> ListInput, List<string> ListZippedFOlder)
         {
             try
             {
                 dataGridView1_direc.Rows.Clear();
-                dataGridView1_direc.DataSource = List2DataTable(ListInput);
+                dataGridView1_direc.DataSource = List2DataTable(ListInput, ListZippedFOlder);
                // dataGridView1_direc.DataSource = ListInput.ToArray();   
             }
             catch
@@ -166,17 +169,39 @@ namespace PriceFeedX.FolderStats
 
         }
 
-        private DataTable List2DataTable(List<string> ListInput )
+        private DataTable List2DataTable(List<string> ListInput_Extracted , List<string> ListInput_ZippedFolder)
         {
-            DataTable dt = new DataTable();
+            ListInput_Extracted.Sort();
+            ListInput_ZippedFolder.Sort();  
+
+               DataTable dt = new DataTable();
             dt.Columns.Add("Extracted Folder");
+            dt.Columns.Add("Zipped Folder");
+            string ZippFoilder = "";
+           
             try
             {
-                for (int i = 0; i < ListInput.Count; i++)
+                for (int i = 0; i < ListInput_Extracted.Count; i++)
                 {
-                    DirectoryInfo di = new DirectoryInfo(ListInput[i]);
+                    string folder = ListInput_Extracted[i]; 
+                    for(int j =0; j < ListInput_ZippedFolder.Count; j++)
+                    {
+                        if(folder == ListInput_ZippedFolder[i])
+                        {
+                            DirectoryInfo diZipp = new DirectoryInfo(ListInput_ZippedFolder[i]);
+                            ZippFoilder  = diZipp.Name;
+                            break;
 
-                    dt.Rows.Add(di.Name);
+
+                        }
+
+                    }
+
+
+                    DirectoryInfo di = new DirectoryInfo(ListInput_Extracted[i]);
+
+                    
+                    dt.Rows.Add(di.Name, ZippFoilder);
 
 
                 }
