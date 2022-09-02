@@ -181,9 +181,9 @@
             this.ClientSize = new System.Drawing.Size(675, 338);
             this.Controls.Add(this.panel1_lower);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1_Folder_Stats";
+            this.Name = "Bhav Copy Directory";
             this.Tag = "Tree View Panel";
-            this.Text = "Form1_Folder_Stats";
+            this.Text = "Bhav Copy Directory";
             this.panel1_lower.ResumeLayout(false);
             this.panel1_upper.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
