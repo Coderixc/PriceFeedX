@@ -6,4 +6,4 @@ Added feature
 Current Module : This will also Load NSE EQUITY BHAV COPY  On daily Basis  User Readable mode and Insert In DataBase
 
 Don’t hesitate to ask for any other materials/Information you think would be helpful.
-You can reach me at kchanchal78@gmail.com  for any custome Inbuilt Software.
+You can reach me at kchanchal78@gmail.com  for any custome Inbuilt Software .
