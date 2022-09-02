@@ -4,3 +4,6 @@ This Module will  load NSE Top 100 Stocks  and Its Price (Current LTP and 5 Day 
 
 Added feature
 Current Module : This will also Load NSE EQUITY BHAV COPY  On daily Basis  User Readable mode and Insert In DataBase
+
+Don’t hesitate to ask for any other materials/Information you think would be helpful.
+You can reach me at kchanchal78@gmail.com  for any custome Inbuilt Software.
