@@ -9,7 +9,7 @@ Current Module : This will also Load NSE EQUITY BHAV COPY  On daily Basis  User 
 
 I developed a very basic Software(Bot) that does the following task -
 1.Automatically Fetch NSE Bhav copy,(Manual Click is also included)
-2.Programmed to do "Extracvt all" without human intervention.
+2.Programmed to do "Extract all" without human intervention.
 3.Added  Another Panel which will  presemt stats  and folder structure , which is already extracted and it will verify if some file is missed.
 4.Presented Log panel for all activity/ Event  for a Task done by Bot.
 
