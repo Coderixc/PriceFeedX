@@ -253,7 +253,6 @@ namespace PriceFeedX.Extract_BhavCopy
                     try
                     {
                             ProcessExtractAllOneByOne(List_Directory_Present, index);
-
                     }
                     catch
                     {
