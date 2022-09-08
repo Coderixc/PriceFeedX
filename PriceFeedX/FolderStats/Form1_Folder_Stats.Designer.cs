@@ -199,13 +199,14 @@
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Text = "ExtractAll";
             // 
             // insertToDBToolStripMenuItem
             // 
             this.insertToDBToolStripMenuItem.Name = "insertToDBToolStripMenuItem";
             this.insertToDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.insertToDBToolStripMenuItem.Text = "InsertToDB";
+            this.insertToDBToolStripMenuItem.Click += new System.EventHandler(this.insertToDBToolStripMenuItem_Click);
             // 
             // Form1_Folder_Stats
             // 

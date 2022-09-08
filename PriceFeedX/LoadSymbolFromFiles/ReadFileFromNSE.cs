@@ -204,7 +204,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
         }
 
 
-        public bool STARTPROCESS_BHAVCOPY(List<string> ListSymbol)
+        public bool STARTPROCESS_BHAVCOPY(List<string> ListSymbol,bool BulkInsert =false)
         {
             try
             {
@@ -212,7 +212,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
                 DT_Result = this.ReadTextfile(this.Dt_NSE_BHAV_COPY);
 
-                this.InsertDt2DB_BhavCopy(DT_Result,ListSymbol);
+                this.InsertDt2DB_BhavCopy(DT_Result,ListSymbol,BulkInsert);
 
                 return true;
             }
@@ -281,7 +281,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
         #region Insert Bhav Copy Csv Files to Database
 
-        private bool InsertDt2DB_BhavCopy(DataTable dt,List<string> ListSymbol)
+        private bool InsertDt2DB_BhavCopy(DataTable dt,List<string> ListSymbol, bool BulkInsert )
         {
             try
             {
@@ -290,6 +290,24 @@ namespace PriceFeedX.LoadSymbolFromFiles
                 {
                     return true;
                 }
+                if( BulkInsert ) //if Bulk insert is Passesd True
+                {
+                    try
+                    {
+                        _InsertBhavCopyPriceToDB = new InsertBhavCopyPrice(dt, ListSymbol );
+
+                        x = _InsertBhavCopyPriceToDB.PrepareInsertQuery(BulkInsert);
+                    }
+                    catch (Exception ex)
+                    {
+                        //("Error(s) Occured in Converting Datatable to List while inserting Symbol to DB.");
+                    }
+
+                    return x;
+
+                }
+
+                        
 
                 string box_msg_y_n_c = "Do you want to Insert new BhavCopy to DB?";
 
@@ -309,7 +327,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
                         _InsertBhavCopyPriceToDB = new InsertBhavCopyPrice(dt, ListSymbol);
 
-                        x = _InsertBhavCopyPriceToDB.PrepareInsertQuery();
+                        x = _InsertBhavCopyPriceToDB.PrepareInsertQuery( BulkInsert);
                     }
                     catch (Exception ex)
                     {

@@ -23,7 +23,7 @@ namespace PriceFeedX
         #region Declare Variable
         private ReadFileFromNSE_EQUITY readFileFromNSE_EQUITY;
 
-        private List<string> List_Symbol;
+        private List<string> Global_List_Symbol;
         private List<string> List_BhavCopy_Prev5;
 
         private UnzippingFunc _UnzippingFunc;
@@ -54,7 +54,7 @@ namespace PriceFeedX
             try
             {
                 //variable
-                this.List_Symbol = new List<string>();
+                this.Global_List_Symbol = new List<string>();
                 this.List_BhavCopy_Prev5 = new List<string>();
 
 
@@ -111,7 +111,7 @@ namespace PriceFeedX
 
                 var list = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<string>(NSE_EQ_BHAVCOPY.mSYMBOL)).ToList();
 
-                this.List_Symbol = list;
+                this.Global_List_Symbol = list;
                
             }
             catch (Exception ex)
@@ -191,7 +191,7 @@ namespace PriceFeedX
         private void TaskProcess2(string path)
         {
             this.readFileFromNSE_EQUITY = new ReadFileFromNSE_EQUITY(path,"0",true);
-            if (!this.readFileFromNSE_EQUITY.STARTPROCESS_BHAVCOPY(this.List_Symbol))
+            if (!this.readFileFromNSE_EQUITY.STARTPROCESS_BHAVCOPY(this.Global_List_Symbol))
             {
                 MessageBox.Show("Failed To load  file from csv");
             }
@@ -301,7 +301,7 @@ namespace PriceFeedX
             //Present All Folder Which contain all Bhav copy
 
             //Tree view 
-            Form1_Folder_Stats _FolderStats = new Form1_Folder_Stats();   
+            Form1_Folder_Stats _FolderStats = new Form1_Folder_Stats(this.Global_List_Symbol);   
 
             //DataGridView
 

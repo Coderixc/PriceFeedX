@@ -67,7 +67,7 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
 
         #endregion
 
-        public bool PrepareInsertQuery()
+        public bool PrepareInsertQuery(bool BulkInsert)
         {
 
             _DataBase_user_1.OpenConnection();
@@ -131,7 +131,7 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
 
                 query = query.Remove(query.Length - 1);
 
-                return this.Insert_2_Db(query);
+                return this.Insert_2_Db(query,  BulkInsert);
 
             }
             catch (Exception ex)
@@ -141,7 +141,7 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
         }
 
         #region Finally after all Calculation , Entering symbols to Table with some default values
-        public bool Insert_2_Db(string Query)
+        public bool Insert_2_Db(string Query,bool BulkInsert)
         {
             try
             {
@@ -152,7 +152,11 @@ namespace PriceFeedX.InsertBhavCopyPriceToDB
                 {
                     x = _DataBase_user_1.ExecuteNonQuery(Query);
                     if (x)
-                        MessageBox.Show("Trades inserted");
+                    {
+                        if(!BulkInsert)
+                            MessageBox.Show("Trades inserted");
+                    }
+
 
                 }
                 return x; ;

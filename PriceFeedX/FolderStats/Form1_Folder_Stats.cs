@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PriceFeedX.Import_Bhav_Copy_NSE;
 using System.IO;
 using  PriceFeedX.Extract_BhavCopy;
+using PriceFeedX.LoadSymbolFromFiles;
 
 namespace PriceFeedX.FolderStats
 {
@@ -18,21 +19,31 @@ namespace PriceFeedX.FolderStats
 
         UnzippingFunc UnzipObj;
         string[] separators = { "\\", "." };
+        private ReadFileFromNSE_EQUITY readFileFromNSE_EQUITY;
+        private List<string> List_Symbol;
 
-        public Form1_Folder_Stats()
+
+        private int X_Note_loc = 0;
+        private int Y_Note_loc = 0; 
+
+
+        public Form1_Folder_Stats(List<string> List_Symbol)
         {
             InitializeComponent();
 
-            _main();
+            _main(List_Symbol);
         }
 
         //Partial Main
         //1. Load All folder in Current Directory
         //2. Locate Path in GUi if Required
-        public  void _main()
+        public  void _main(List<string> ListSymbol)
         {
             UnzipObj = new UnzippingFunc();
             Locate_Directory();
+
+            this.List_Symbol = new List<string>();
+            this.List_Symbol = ListSymbol;//Copy
 
         }
 
@@ -109,6 +120,9 @@ namespace PriceFeedX.FolderStats
 
             if (e.Button == MouseButtons.Right)
             {
+
+                this.X_Note_loc = e.X;
+                this.Y_Note_loc= e.Y;
 
                 contextMenuStrip1_RightMouse.Show(this, new Point(e.X, e.Y));
 
@@ -252,6 +266,94 @@ namespace PriceFeedX.FolderStats
                     // this.toolTip1.SetToolTip(this.treeView1, "");
                 }
             }
+        }
+
+        private void insertToDBToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+
+                // Get the node at the current mouse pointer location.  
+                TreeNode theNode = this.treeView1.GetNodeAt( X_Note_loc,Y_Note_loc);
+
+                // Set a ToolTip only if the mouse pointer is actually paused on a node.  
+
+
+                if (theNode != null && theNode.Text.Contains("NSE_"))
+                {
+                    string dir = DumpFolder.Dump_Path + @"\" + theNode.Text.ToString();
+
+                    TreeNode MyTreeView = (treeView1.SelectedNode);
+
+                    
+
+                    List<string> ListFolder;
+                    ExtractedFolder(dir, out ListFolder);
+
+
+                    for(int i = 0; i < ListFolder.Count;i++)
+                    {
+                        try
+                        {
+                            string path = ListFolder[i].ToString();
+                            string[] files = Directory.GetFiles(path);
+
+                            for(int folderidx =0; folderidx < files.Length;folderidx++)
+                            {
+                                this.AutoInsertBhavCopyToDB(files[folderidx]);
+                            }
+
+
+                        }
+                        catch
+                        {
+
+                        }
+
+                    }
+
+          
+
+
+                }
+                else     // Pointer is not over a node so clear the ToolTip.  
+                {
+                    // this.toolTip1.SetToolTip(this.treeView1, "");
+                }
+
+
+            }
+            catch
+            {
+
+            }
+
+
+        }
+
+        private void AutoInsertBhavCopyToDB(string Path, bool Automatic = true)
+        {
+            try
+            {
+                this.readFileFromNSE_EQUITY = new ReadFileFromNSE_EQUITY(Path, "0", true);
+                if (!this.readFileFromNSE_EQUITY.STARTPROCESS_BHAVCOPY(this.List_Symbol , Automatic))
+                {
+                    MessageBox.Show("Failed To load  file from csv");
+                }
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                this.readFileFromNSE_EQUITY = null;
+            }
+
+
+
         }
     }
 }
