@@ -107,30 +107,17 @@ namespace PriceFeedX.FolderStats
         private void treeView1_MouseClick(object sender, MouseEventArgs e)
         {
 
-
-            // Get the node at the current mouse pointer location.  
-           TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
-
-            // Set a ToolTip only if the mouse pointer is actually paused on a node.  
-
-            
-            if (theNode != null   && theNode.Text.Contains("NSE_"))
+            if (e.Button == MouseButtons.Right)
             {
-                string dir = DumpFolder.Dump_Path + @"\"+ theNode.Text.ToString();
+                //ContextMenu cm = new ContextMenu();
+                //cm.MenuItems.Add("Item 1");
+                //cm.MenuItems.Add("Item 2");
 
-                TreeNode MyTreeView  =(treeView1.SelectedNode);
-
-                ExtractAllfromSelectedDirectory(dir, theNode.Index);
-
-                List<string> ListFolder;
-                ExtractedFolder(dir , out ListFolder);
-
-
+                //panel1_lower.ContextMenu = cm;
+                //panel1_lower.Show();
             }
-            else     // Pointer is not over a node so clear the ToolTip.  
-            {
-               // this.toolTip1.SetToolTip(this.treeView1, "");
-            }
+
+
 
         }
 
@@ -229,6 +216,40 @@ namespace PriceFeedX.FolderStats
         private void progressBar1_AutoInsert_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+
+            //Parse FUntion Only If Left mouse Button Is Clicked as Input
+            if (e.Button == MouseButtons.Left)
+            {
+
+                // Get the node at the current mouse pointer location.  
+                TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
+
+                // Set a ToolTip only if the mouse pointer is actually paused on a node.  
+
+
+                if (theNode != null && theNode.Text.Contains("NSE_"))
+                {
+                    string dir = DumpFolder.Dump_Path + @"\" + theNode.Text.ToString();
+
+                    TreeNode MyTreeView = (treeView1.SelectedNode);
+
+                    ExtractAllfromSelectedDirectory(dir, theNode.Index);
+
+                    List<string> ListFolder;
+                    ExtractedFolder(dir, out ListFolder);
+
+
+                }
+                else     // Pointer is not over a node so clear the ToolTip.  
+                {
+                    // this.toolTip1.SetToolTip(this.treeView1, "");
+                }
+            }
         }
     }
 }
