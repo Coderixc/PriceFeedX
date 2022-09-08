@@ -109,17 +109,19 @@ namespace PriceFeedX.FolderStats
 
             if (e.Button == MouseButtons.Right)
             {
-                //ContextMenu cm = new ContextMenu();
-                //cm.MenuItems.Add("Item 1");
-                //cm.MenuItems.Add("Item 2");
 
-                //panel1_lower.ContextMenu = cm;
-                //panel1_lower.Show();
+                contextMenuStrip1_RightMouse.Show(this, new Point(e.X, e.Y));
+
+
             }
 
-
-
+            //panel1_lower.ContextMenu = cm;
+            //panel1_lower.Show();
         }
+
+
+
+     
 
         //Read All Folder which is Extracted
         private void ExtractedFolder(string InputDirectoryPath, out  List<string>  List_Extracted_BhavCopyFolder)
