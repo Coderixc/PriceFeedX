@@ -9,6 +9,8 @@ using PriceFeedX.InsertBhavCopyPriceToDB;
 
 
 using System.Data;
+using System.Globalization;
+
 namespace PriceFeedX.LoadSymbolFromFiles
 {
 
@@ -55,8 +57,9 @@ namespace PriceFeedX.LoadSymbolFromFiles
         DataTable Dt_NSE_Symbol_File;
         DataTable Dt_NSE_BHAV_COPY;
         InsertSymbolToDB _InsertSymbolToDB;
-        InsertBhavCopyPrice _InsertBhavCopyPriceToDB;   
-        
+        InsertBhavCopyPrice _InsertBhavCopyPriceToDB;
+        string fmt = "dd-MMM-yyyy";
+
 
         #region Create GUI Panel to load Textf file
         public ReadFileFromNSE_EQUITY( string inputSymbolCsvPath)
@@ -152,6 +155,27 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
         #endregion
 
+
+        #region Convert Timestamp  To Integer Format In YYYYMMDD
+        private void ConvertDate2_Int(string timestamp,out string IntDate)
+        {
+            IntDate = string.Empty;
+            try
+            {
+ 
+                string dt=  DateTime.ParseExact(timestamp, this.fmt, null).ToString("yyyyMMdd");
+                IntDate = dt;   
+            }
+            catch
+            {
+                IntDate = timestamp;
+            }
+
+        }
+
+
+        #endregion
+
         #region   Read NIFTY TOP 200 XX file And Load to Local Internal Structure
         public DataTable ReadTextfile( DataTable Dt_Input_With_ColoumName)
         {
@@ -171,7 +195,20 @@ namespace PriceFeedX.LoadSymbolFromFiles
                     DataRow Row = Dt_Input_With_ColoumName.NewRow();
                     Fields = Lines[i].Split(new char[] { ',' });
                     for (int f = 0; f < Dt_Input_With_ColoumName.Columns.Count; f++)
-                        Row[f] = Fields[f];
+                    {
+                        //ConvertiNg Date To 01-APR-2021  --- > 20210401  YYYYMMDD
+                        if(f == 10)
+                        {
+                            ConvertDate2_Int(Fields[f],out string Int_Date);
+                            Row[f] = Int_Date;
+                        }
+                        else
+                        {
+
+                            Row[f] = Fields[f];
+                        }
+                    }
+
                     Dt_Input_With_ColoumName.Rows.Add(Row);
                 }
 
