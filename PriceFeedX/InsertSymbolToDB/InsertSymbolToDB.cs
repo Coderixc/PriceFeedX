@@ -40,8 +40,17 @@ namespace PriceFeedX
             this.validate_1_Read_DB(ref ListDb);
             List<string> ListTOENter = this.validate_2_Match_both_list(ListDb, List_Symbol);
 
+            bool Key_processWithoutComapring = false;
 
-            if(ListTOENter.Count == 0)
+            if (ListDb.Count == 0)
+            {
+                MessageBox.Show("No Symbol is Present in DB.");
+                ListTOENter = List_Symbol;
+                Key_processWithoutComapring = true;
+            }
+
+
+            if (ListTOENter.Count == 0 && Key_processWithoutComapring == false)
             {
                 MessageBox.Show("No New Sybols found");
                 return true;
