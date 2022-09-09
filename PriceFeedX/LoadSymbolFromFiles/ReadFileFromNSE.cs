@@ -176,6 +176,56 @@ namespace PriceFeedX.LoadSymbolFromFiles
 
         #endregion
 
+        #region Read Bhav Copy File
+
+        #region   Read NIFTY TOP 200 XX file And Load to Local Internal Structure
+        public DataTable ReadBhavCopyfile(DataTable Dt_Input_With_ColoumName)
+        {
+            try
+            {
+                if (this.INPUTTFILE == null)
+                    return new DataTable();
+
+                //START TASK
+
+
+                string[] Lines = File.ReadAllLines(this.INPUTTFILE);
+
+                string[] Fields;
+                for (int i = 1; i < Lines.GetLength(0); i++)
+                {
+                    DataRow Row = Dt_Input_With_ColoumName.NewRow();
+                    Fields = Lines[i].Split(new char[] { ',' });
+                    for (int f = 0; f < Dt_Input_With_ColoumName.Columns.Count; f++)
+                    {
+                        //ConvertiNg Date To 01-APR-2021  --- > 20210401  YYYYMMDD
+                        if (f == 10)
+                        {
+                            ConvertDate2_Int(Fields[f], out string Int_Date);
+                            Row[f] = Int_Date;
+                        }
+                        else
+                        {
+
+                            Row[f] = Fields[f];
+                        }
+                    }
+
+                    Dt_Input_With_ColoumName.Rows.Add(Row);
+                }
+
+                return Dt_Input_With_ColoumName;
+
+            }
+            catch (Exception ex)
+            {
+                return Dt_Input_With_ColoumName;
+            }
+        }
+        #endregion
+
+        #endregion
+
         #region   Read NIFTY TOP 200 XX file And Load to Local Internal Structure
         public DataTable ReadTextfile( DataTable Dt_Input_With_ColoumName)
         {
@@ -196,17 +246,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
                     Fields = Lines[i].Split(new char[] { ',' });
                     for (int f = 0; f < Dt_Input_With_ColoumName.Columns.Count; f++)
                     {
-                        //ConvertiNg Date To 01-APR-2021  --- > 20210401  YYYYMMDD
-                        if(f == 10)
-                        {
-                            ConvertDate2_Int(Fields[f],out string Int_Date);
-                            Row[f] = Int_Date;
-                        }
-                        else
-                        {
-
-                            Row[f] = Fields[f];
-                        }
+                        Row[f] = Fields[f];
                     }
 
                     Dt_Input_With_ColoumName.Rows.Add(Row);
@@ -247,7 +287,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
             {
                 DataTable DT_Result = new DataTable();
 
-                DT_Result = this.ReadTextfile(this.Dt_NSE_BHAV_COPY);
+                DT_Result = this.ReadBhavCopyfile(this.Dt_NSE_BHAV_COPY);
 
                 this.InsertDt2DB_BhavCopy(DT_Result,ListSymbol,BulkInsert);
 
