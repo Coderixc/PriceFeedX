@@ -366,6 +366,7 @@ namespace PriceFeedX.LoadSymbolFromFiles
                 if (dt.Rows.Count == 0)
                 {
                     return true;
+
                 }
                 if( BulkInsert ) //if Bulk insert is Passesd True
                 {
