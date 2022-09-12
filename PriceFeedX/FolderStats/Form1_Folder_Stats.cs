@@ -26,19 +26,30 @@ namespace PriceFeedX.FolderStats
         private int X_Note_loc = 0;
         private int Y_Note_loc = 0; 
 
+        private int Max_date = 0;   
 
-        public Form1_Folder_Stats(List<string> List_Symbol)
+
+        public Form1_Folder_Stats(List<string> List_Symbol,string Max_BhavCopyDate)
         {
             InitializeComponent();
 
-            _main(List_Symbol);
+            _main(List_Symbol, Max_BhavCopyDate);
         }
 
         //Partial Main
         //1. Load All folder in Current Directory
         //2. Locate Path in GUi if Required
-        public  void _main(List<string> ListSymbol)
+        public  void _main(List<string> ListSymbol, string Max_BhavCopyDate)
         {
+            try
+            {
+                this.Max_date = Convert.ToInt32(Max_BhavCopyDate);
+            }
+            catch (Exception ex)
+            {
+                this.Max_date = 0;  
+            }
+
             UnzipObj = new UnzippingFunc();
             Locate_Directory();
 
@@ -295,14 +306,43 @@ namespace PriceFeedX.FolderStats
 
                     for(int i = 0; i < ListFolder.Count;i++)
                     {
+                        int max_date = 0;
+
                         try
                         {
                             string path = ListFolder[i].ToString();
                             string[] files = Directory.GetFiles(path);
 
-                            for(int folderidx =0; folderidx < files.Length;folderidx++)
+                            //Read Bhav Copy Data
+
+                            //".\\1_Dump_BhavCopy\\NSE_2022_09_12\\cm_01APR2022bhav.csv\\cm01APR2022bhav.csv"
+
+                            for (int folderidx =0; folderidx < files.Length;folderidx++)
                             {
-                                this.AutoInsertBhavCopyToDB(files[folderidx]);
+                                try
+                                {
+                                    string[] data = files[folderidx].Split(separators, StringSplitOptions.None);
+                                    string[] data1 = data[4].Split(new char[] { '_','.'});
+                                    string aidate = data1[1].Substring(0,9);
+                                    string dt = DateTime.ParseExact(aidate, "ddMMMyyyy", null).ToString("yyyyMMdd");
+
+                                    max_date =Convert.ToInt32(dt);  
+
+                                }
+                                catch
+                                {
+                                //TODO
+                                }
+                                if(max_date > this.Max_date)
+                                {
+                                    this.AutoInsertBhavCopyToDB(files[folderidx]);
+                                }
+                                else
+                                {
+                                    //TODO: ADD Confirmatioin Signal to GUI
+                                }
+
+
                             }
 
 

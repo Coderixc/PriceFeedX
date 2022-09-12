@@ -28,6 +28,8 @@ namespace PriceFeedX
 
         private UnzippingFunc _UnzippingFunc;
 
+        private string Max_Date;
+
 
 
         #endregion
@@ -56,6 +58,7 @@ namespace PriceFeedX
                 //variable
                 this.Global_List_Symbol = new List<string>();
                 this.List_BhavCopy_Prev5 = new List<string>();
+                this.Max_Date = String.Empty;
 
 
 
@@ -91,6 +94,8 @@ namespace PriceFeedX
         }
         private void TaskProcess_001()
         {
+            this.Get_Max_Day_Of_BhavcopyInsertedInDB();
+
             DataBase _user_1 = null;
             try
             {
@@ -124,7 +129,6 @@ namespace PriceFeedX
             }
 
         }
-
 
         private void TaskProcess_002()
         {
@@ -169,8 +173,39 @@ namespace PriceFeedX
 
         }
 
+        #region  READ LATEST DATE OF BHAV COPY DATA INSERTED
+        private void Get_Max_Day_Of_BhavcopyInsertedInDB()
+        {
+            DataBase _user_1 = null;
 
+            try
+            {
+                _user_1 = new DataBase();
+                _user_1.OpenConnection();
+                DataTable dt = new DataTable();
 
+                string query = "SELECT Ifnull(MAX(timestamp),0) as Max_Date  FROM " + Credential.mSchema + "." + Credential.mTable_BhavCopyPrice + ";";
+                // Fetch Max_date  from Table
+                _user_1.ExecuteReader(query, ref dt);
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show($" No Symbol found in Table: {Credential.mTable_Symbol} ");
+                }
+                var list = dt.Rows.OfType<DataRow>().Select(dr => dr.Field<string>("Max_Date")).ToList();
+                this.Max_Date =list[0].ToString();  
+
+            }
+            catch
+            {
+                MessageBox.Show("Error(s) in Reading  Latest date OF Bhav cOpy Treades");
+            }
+            finally
+            {
+                _user_1.Reset();
+            }
+
+        }
+        #endregion
 
         #region Load NSE TOP XX files
         private void TaskProcess1(string path)
@@ -199,9 +234,6 @@ namespace PriceFeedX
 
         }
         #endregion
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -301,7 +333,7 @@ namespace PriceFeedX
             //Present All Folder Which contain all Bhav copy
 
             //Tree view 
-            Form1_Folder_Stats _FolderStats = new Form1_Folder_Stats(this.Global_List_Symbol);   
+            Form1_Folder_Stats _FolderStats = new Form1_Folder_Stats(this.Global_List_Symbol, this.Max_Date);   
 
             //DataGridView
 

@@ -186,8 +186,8 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             if (this.ExclueSaturday_Sunday(year, count, day)) 
                                 continue;
 
-                            if (this.ExtractRequesttillToday(year, count, day))
-                                break;
+                            //if (this.ExtractRequesttillToday(year, count, day))
+                                //break;
 
                             string twodigitdate = day.ToString();
                             if (day.ToString().Length == 1)
