@@ -232,7 +232,8 @@ namespace PriceFeedX.Extract_BhavCopy
             if(ListIndex != -1)
             {
 
-                index = ListIndex;  
+                index = ListIndex;
+                //index = 1;
             }
 
             try

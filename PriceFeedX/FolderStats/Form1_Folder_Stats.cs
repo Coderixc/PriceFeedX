@@ -395,5 +395,10 @@ namespace PriceFeedX.FolderStats
 
 
         }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

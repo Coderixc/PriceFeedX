@@ -60,24 +60,27 @@
             // 
             this.panel1_lower.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1_lower.Controls.Add(this.panel1_upper);
-            this.panel1_lower.Location = new System.Drawing.Point(6, 6);
+            this.panel1_lower.Location = new System.Drawing.Point(9, 9);
+            this.panel1_lower.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1_lower.Name = "panel1_lower";
-            this.panel1_lower.Size = new System.Drawing.Size(676, 410);
+            this.panel1_lower.Size = new System.Drawing.Size(1014, 631);
             this.panel1_lower.TabIndex = 0;
             // 
             // panel1_upper
             // 
             this.panel1_upper.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.panel1_upper.Controls.Add(this.splitContainer1);
-            this.panel1_upper.Location = new System.Drawing.Point(5, 8);
+            this.panel1_upper.Location = new System.Drawing.Point(8, 12);
+            this.panel1_upper.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1_upper.Name = "panel1_upper";
-            this.panel1_upper.Size = new System.Drawing.Size(657, 314);
+            this.panel1_upper.Size = new System.Drawing.Size(986, 483);
             this.panel1_upper.TabIndex = 0;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -89,8 +92,9 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel2_Progress);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.panel1_FileProperties);
-            this.splitContainer1.Size = new System.Drawing.Size(657, 314);
-            this.splitContainer1.SplitterDistance = 218;
+            this.splitContainer1.Size = new System.Drawing.Size(986, 483);
+            this.splitContainer1.SplitterDistance = 327;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 0;
             // 
             // treeView1
@@ -99,8 +103,9 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeView1.Font = new System.Drawing.Font("Microsoft Tai Le", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(217, 314);
+            this.treeView1.Size = new System.Drawing.Size(324, 483);
             this.treeView1.TabIndex = 0;
             this.treeView1.Tag = "Items";
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -113,18 +118,20 @@
             this.panel2_Progress.Controls.Add(this.progressBar1_AutoInsert);
             this.panel2_Progress.Controls.Add(this.listBox1_AutoInsert);
             this.panel2_Progress.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2_Progress.Location = new System.Drawing.Point(3, 126);
+            this.panel2_Progress.Location = new System.Drawing.Point(4, 194);
+            this.panel2_Progress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2_Progress.Name = "panel2_Progress";
-            this.panel2_Progress.Size = new System.Drawing.Size(320, 124);
+            this.panel2_Progress.Size = new System.Drawing.Size(480, 191);
             this.panel2_Progress.TabIndex = 2;
             this.panel2_Progress.UseWaitCursor = true;
             // 
             // progressBar1_AutoInsert
             // 
             this.progressBar1_AutoInsert.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.progressBar1_AutoInsert.Location = new System.Drawing.Point(3, 111);
+            this.progressBar1_AutoInsert.Location = new System.Drawing.Point(4, 171);
+            this.progressBar1_AutoInsert.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.progressBar1_AutoInsert.Name = "progressBar1_AutoInsert";
-            this.progressBar1_AutoInsert.Size = new System.Drawing.Size(314, 10);
+            this.progressBar1_AutoInsert.Size = new System.Drawing.Size(471, 15);
             this.progressBar1_AutoInsert.TabIndex = 2;
             this.progressBar1_AutoInsert.UseWaitCursor = true;
             // 
@@ -132,10 +139,11 @@
             // 
             this.listBox1_AutoInsert.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.listBox1_AutoInsert.FormattingEnabled = true;
-            this.listBox1_AutoInsert.ItemHeight = 12;
-            this.listBox1_AutoInsert.Location = new System.Drawing.Point(3, 4);
+            this.listBox1_AutoInsert.ItemHeight = 17;
+            this.listBox1_AutoInsert.Location = new System.Drawing.Point(4, 6);
+            this.listBox1_AutoInsert.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listBox1_AutoInsert.Name = "listBox1_AutoInsert";
-            this.listBox1_AutoInsert.Size = new System.Drawing.Size(314, 88);
+            this.listBox1_AutoInsert.Size = new System.Drawing.Size(469, 123);
             this.listBox1_AutoInsert.TabIndex = 0;
             this.listBox1_AutoInsert.UseWaitCursor = true;
             // 
@@ -143,9 +151,10 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(3, 256);
+            this.panel1.Location = new System.Drawing.Point(4, 394);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(320, 55);
+            this.panel1.Size = new System.Drawing.Size(480, 85);
             this.panel1.TabIndex = 1;
             this.panel1.UseWaitCursor = true;
             // 
@@ -154,9 +163,10 @@
             this.button1.BackColor = System.Drawing.SystemColors.Highlight;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(3, 3);
+            this.button1.Location = new System.Drawing.Point(4, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 21);
+            this.button1.Size = new System.Drawing.Size(104, 32);
             this.button1.TabIndex = 0;
             this.button1.Text = "Auto Insert";
             this.button1.UseVisualStyleBackColor = false;
@@ -167,20 +177,22 @@
             this.panel1_FileProperties.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1_FileProperties.Controls.Add(this.dataGridView1_direc);
             this.panel1_FileProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1_FileProperties.Location = new System.Drawing.Point(3, 5);
+            this.panel1_FileProperties.Location = new System.Drawing.Point(4, 8);
+            this.panel1_FileProperties.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1_FileProperties.Name = "panel1_FileProperties";
-            this.panel1_FileProperties.Size = new System.Drawing.Size(320, 117);
+            this.panel1_FileProperties.Size = new System.Drawing.Size(480, 180);
             this.panel1_FileProperties.TabIndex = 0;
             // 
             // dataGridView1_direc
             // 
             this.dataGridView1_direc.AllowUserToOrderColumns = true;
             this.dataGridView1_direc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1_direc.Location = new System.Drawing.Point(17, 14);
+            this.dataGridView1_direc.Location = new System.Drawing.Point(26, 22);
+            this.dataGridView1_direc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1_direc.Name = "dataGridView1_direc";
             this.dataGridView1_direc.RowHeadersVisible = false;
             this.dataGridView1_direc.RowHeadersWidth = 62;
-            this.dataGridView1_direc.Size = new System.Drawing.Size(288, 90);
+            this.dataGridView1_direc.Size = new System.Drawing.Size(432, 138);
             this.dataGridView1_direc.TabIndex = 0;
             // 
             // contextMenuStrip1_RightMouse
@@ -188,33 +200,36 @@
             this.contextMenuStrip1_RightMouse.BackColor = System.Drawing.Color.CornflowerBlue;
             this.contextMenuStrip1_RightMouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.contextMenuStrip1_RightMouse.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStrip1_RightMouse.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.contextMenuStrip1_RightMouse.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewToolStripMenuItem,
             this.insertToDBToolStripMenuItem});
             this.contextMenuStrip1_RightMouse.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStrip1_RightMouse.Name = "contextMenuStrip1_RightMouse";
-            this.contextMenuStrip1_RightMouse.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1_RightMouse.Size = new System.Drawing.Size(241, 89);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.viewToolStripMenuItem.Text = "ExtractAll";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
             // insertToDBToolStripMenuItem
             // 
             this.insertToDBToolStripMenuItem.Name = "insertToDBToolStripMenuItem";
-            this.insertToDBToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.insertToDBToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
             this.insertToDBToolStripMenuItem.Text = "InsertToDB";
             this.insertToDBToolStripMenuItem.Click += new System.EventHandler(this.insertToDBToolStripMenuItem_Click);
             // 
             // Form1_Folder_Stats
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 417);
+            this.ClientSize = new System.Drawing.Size(1030, 642);
             this.Controls.Add(this.panel1_lower);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1_Folder_Stats";
             this.Tag = "Tree View Panel";
             this.Text = "Bhav Copy Directory";
