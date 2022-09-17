@@ -195,7 +195,7 @@ namespace PriceFeedX.Extract_BhavCopy
 
                         //Create Output folder with Prefix ""  -- will decide
 
-                        string outpath = "." + splitpath[1] + "cm_" + splitpath[2] + ".csv";
+                        string outpath = "." + splitpath[1] + "cm" + splitpath[2] + ".csv";
 
                         this.ExtractAll(zipfolder, outpath);
 

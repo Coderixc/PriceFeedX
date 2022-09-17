@@ -154,10 +154,11 @@ namespace PriceFeedX.FolderStats
             List_Extracted_BhavCopyFolder = new List<string>();
             try
             {
-                List_Extracted_BhavCopyFolder = Directory.GetDirectories(InputDirectoryPath).Where (f => f.Contains("*.Zip") == false).ToList();
+                List_Extracted_BhavCopyFolder = Directory.GetDirectories(InputDirectoryPath).Where (f => f.Contains("cm_") == true).ToList();
+
 
                 List<string> List_Zipped_BhavCopyFolder = new List<string>();
-                List_Zipped_BhavCopyFolder = Directory.GetDirectories(InputDirectoryPath).Where(f => f.Contains("*.Zip") == true).ToList();
+                List_Zipped_BhavCopyFolder = Directory.GetFiles(InputDirectoryPath, "*.zip").ToList();
 
                 PopulateDatagridView(List_Extracted_BhavCopyFolder, List_Zipped_BhavCopyFolder);
             }
@@ -172,7 +173,7 @@ namespace PriceFeedX.FolderStats
         {
             try
             {
-                dataGridView1_direc.Rows.Clear();
+                //dataGridView1_direc.Rows.Clear();
                 dataGridView1_direc.DataSource = List2DataTable(ListInput, ListZippedFOlder);
                // dataGridView1_direc.DataSource = ListInput.ToArray();   
             }
@@ -192,15 +193,27 @@ namespace PriceFeedX.FolderStats
             dt.Columns.Add("Extracted Folder");
             dt.Columns.Add("Zipped Folder");
             string ZippFoilder = "";
-           
+            string ZippFoilder1 = "";
+            string ZippFoilder2 = "";
+
             try
             {
                 for (int i = 0; i < ListInput_Extracted.Count; i++)
                 {
-                    string folder = ListInput_Extracted[i]; 
-                    for(int j =0; j < ListInput_ZippedFolder.Count; j++)
+                    string folder = ListInput_Extracted[i];
+
+                    DirectoryInfo diZipp1 = new DirectoryInfo(ListInput_Extracted[i]);
+                    ZippFoilder1 = diZipp1.Name.Replace("_", "") + ".zip";
+                        ;
+
+
+
+                    for (int j =0; j < ListInput_ZippedFolder.Count; j++)
                     {
-                        if(folder == ListInput_ZippedFolder[i])
+                        DirectoryInfo diZipp2 = new DirectoryInfo(ListInput_ZippedFolder[i]);
+                        ZippFoilder2 = diZipp2.Name;
+
+                        if (ZippFoilder1 == ZippFoilder2)
                         {
                             DirectoryInfo diZipp = new DirectoryInfo(ListInput_ZippedFolder[i]);
                             ZippFoilder  = diZipp.Name;
@@ -283,9 +296,6 @@ namespace PriceFeedX.FolderStats
         {
             try
             {
-
-
-
                 // Get the node at the current mouse pointer location.  
                 TreeNode theNode = this.treeView1.GetNodeAt( X_Note_loc,Y_Note_loc);
 
@@ -317,23 +327,23 @@ namespace PriceFeedX.FolderStats
 
                             //".\\1_Dump_BhavCopy\\NSE_2022_09_12\\cm_01APR2022bhav.csv\\cm01APR2022bhav.csv"
 
-                            for (int folderidx =0; folderidx < files.Length;folderidx++)
+                            for (int folderidx = 0; folderidx < files.Length; folderidx++)
                             {
                                 try
                                 {
                                     string[] data = files[folderidx].Split(separators, StringSplitOptions.None);
-                                    string[] data1 = data[4].Split(new char[] { '_','.'});
-                                    string aidate = data1[1].Substring(0,9);
+                                    string[] data1 = data[4].Split(new char[] { '_', '.' });
+                                    string aidate = data1[1].Substring(0, 9);
                                     string dt = DateTime.ParseExact(aidate, "ddMMMyyyy", null).ToString("yyyyMMdd");
 
-                                    max_date =Convert.ToInt32(dt);  
+                                    max_date = Convert.ToInt32(dt);
 
                                 }
                                 catch
                                 {
-                                //TODO
+                                    //TODO
                                 }
-                                if(max_date > this.Max_date)
+                                if (max_date > this.Max_date)
                                 {
                                     this.AutoInsertBhavCopyToDB(files[folderidx]);
                                 }
@@ -345,7 +355,6 @@ namespace PriceFeedX.FolderStats
 
                             }
 
-
                         }
                         catch
                         {
@@ -353,9 +362,6 @@ namespace PriceFeedX.FolderStats
                         }
 
                     }
-
-          
-
 
                 }
                 else     // Pointer is not over a node so clear the ToolTip.  
@@ -369,8 +375,6 @@ namespace PriceFeedX.FolderStats
             {
 
             }
-
-
         }
 
         private void AutoInsertBhavCopyToDB(string Path, bool Automatic = true)
