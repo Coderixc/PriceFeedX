@@ -173,6 +173,7 @@ namespace PriceFeedX.FolderStats
         {
             try
             {
+
                 //dataGridView1_direc.Rows.Clear();
                 dataGridView1_direc.DataSource = List2DataTable(ListInput, ListZippedFOlder);
                // dataGridView1_direc.DataSource = ListInput.ToArray();   
