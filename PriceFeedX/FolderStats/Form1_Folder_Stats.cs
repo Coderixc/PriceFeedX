@@ -154,7 +154,7 @@ namespace PriceFeedX.FolderStats
             List_Extracted_BhavCopyFolder = new List<string>();
             try
             {
-                List_Extracted_BhavCopyFolder = Directory.GetDirectories(InputDirectoryPath).Where (f => f.Contains("cm_") == true).ToList();
+                List_Extracted_BhavCopyFolder = Directory.GetDirectories(InputDirectoryPath).Where (f => f.Contains("cm") == true).ToList();
 
 
                 List<string> List_Zipped_BhavCopyFolder = new List<string>();
@@ -333,8 +333,9 @@ namespace PriceFeedX.FolderStats
                                 try
                                 {
                                     string[] data = files[folderidx].Split(separators, StringSplitOptions.None);
-                                    string[] data1 = data[4].Split(new char[] { '_', '.' });
-                                    string aidate = data1[1].Substring(0, 9);
+                                    //string[] data1 = data[4].Split(new char[] { '_', '.' });
+                                    string[] data1 = data[4].Replace("cm","").Split(new char[] { '.' });
+                                    string aidate = data1[0].Substring(0, 9);
                                     string dt = DateTime.ParseExact(aidate, "ddMMMyyyy", null).ToString("yyyyMMdd");
 
                                     max_date = Convert.ToInt32(dt);
@@ -347,6 +348,9 @@ namespace PriceFeedX.FolderStats
                                 if (max_date > this.Max_date)
                                 {
                                     this.AutoInsertBhavCopyToDB(files[folderidx]);
+
+                                    MessageBox.Show($"Bhav Copy {max_date} Price inserted to DB ");
+
                                 }
                                 else
                                 {
