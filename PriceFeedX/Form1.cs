@@ -139,7 +139,7 @@ namespace PriceFeedX
                 _user_1.OpenConnection();
                 DataTable dt = new DataTable();
                 //SELECT distinct  Timestamp FROM pricedata.bhavcopyprice   order by `timestamp` Desc;
-                string query = " SELECT  distinct  Timestamp FROM " + Credential.mSchema + "." + Credential.mTable_BhavCopyPrice + " order by `timestamp` Desc; ";
+                string query = " SELECT  distinct  Timestamp FROM " + Credential.mSchema + "." + Credential.mTable_BhavCopyPrice + " order by `timestamp` Desc Limit by 5 ; ";
 
                 // Fetch symbol name from Table
                 _user_1.ExecuteReader(query, ref dt);
