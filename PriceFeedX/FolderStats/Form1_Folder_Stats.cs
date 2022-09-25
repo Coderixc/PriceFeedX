@@ -211,12 +211,12 @@ namespace PriceFeedX.FolderStats
 
                     for (int j =0; j < ListInput_ZippedFolder.Count; j++)
                     {
-                        DirectoryInfo diZipp2 = new DirectoryInfo(ListInput_ZippedFolder[i]);
+                        DirectoryInfo diZipp2 = new DirectoryInfo(ListInput_ZippedFolder[j]);
                         ZippFoilder2 = diZipp2.Name;
 
                         if (ZippFoilder1 == ZippFoilder2)
                         {
-                            DirectoryInfo diZipp = new DirectoryInfo(ListInput_ZippedFolder[i]);
+                            DirectoryInfo diZipp = new DirectoryInfo(ListInput_ZippedFolder[j]);
                             ZippFoilder  = diZipp.Name;
                             break;
 
