@@ -197,6 +197,8 @@ namespace PriceFeedX.FolderStats
             string ZippFoilder1 = "";
             string ZippFoilder2 = "";
 
+            bool Lock_Diplay_as_left_out = false;
+
             try
             {
                 for (int i = 0; i < ListInput_Extracted.Count; i++)
@@ -218,6 +220,8 @@ namespace PriceFeedX.FolderStats
                         {
                             DirectoryInfo diZipp = new DirectoryInfo(ListInput_ZippedFolder[j]);
                             ZippFoilder  = diZipp.Name;
+
+                            Lock_Diplay_as_left_out = true; 
                             break;
 
 
@@ -228,8 +232,17 @@ namespace PriceFeedX.FolderStats
 
                     DirectoryInfo di = new DirectoryInfo(ListInput_Extracted[i]);
 
+                    if(Lock_Diplay_as_left_out == true)
+                    {
+                        dt.Rows.Add(di.Name, ZippFoilder);
+                        Lock_Diplay_as_left_out = false;    
+                    }
+                    else
+                    {
+                        dt.Rows.Add(di.Name, "NA");
+                    }
                     
-                    dt.Rows.Add(di.Name, ZippFoilder);
+
 
 
                 }
