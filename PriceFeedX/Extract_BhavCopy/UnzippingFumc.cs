@@ -243,7 +243,6 @@ namespace PriceFeedX.Extract_BhavCopy
                 //Read path where all bhav copy ois located
                 this.Glob( out List_Directory_Present);
 
-
                 //Chec if curent direectory is Empty
                 if(List_Directory_Present.Count == 0)
                 {
