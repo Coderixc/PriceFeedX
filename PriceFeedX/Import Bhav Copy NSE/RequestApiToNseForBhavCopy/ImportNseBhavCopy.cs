@@ -211,7 +211,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             //string url_Direct = @"https://www1.nseindia.com/content/historical/EQUITIES/2022/JUL/cm20JUL2022bhav.csv.zip";
                             Uri uri_t = new Uri(tempurl);
 
-                            string Outputwithfolder = DumpFolder.m_DatewiseFolder + "/" + outputfolder;
+                            string Outputwithfolder = DumpFolder.m_DatewiseFolder + @"\" + outputfolder;
 
                             //If bhav copy already preent(downloaded) in Directory , avoid inserting Bhav Copy
 
