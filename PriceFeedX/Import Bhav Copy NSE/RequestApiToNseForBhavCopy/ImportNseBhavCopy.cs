@@ -79,7 +79,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
             form.Controls.Add(dynamicPanel);
             CreateMyPanel();
 
-            form.Show();
+            //form.Show();
 
 
         }
@@ -202,8 +202,6 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
                             tempurl += outputfolder;
                             string f1 = String.Empty;
-
-
 
                             WebClient webClient = new WebClient();
                             webClient.Headers.Add("Accept: text/html, application/xhtml+xml, */*");
