@@ -77,6 +77,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
         {
             form = new Form();
             form.Controls.Add(dynamicPanel);
+
             CreateMyPanel();
 
             //form.Show();
