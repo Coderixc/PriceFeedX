@@ -67,6 +67,12 @@ namespace PriceFeedX.FolderStats
 
         }
 
+
+        private void Refresh()
+        {
+            this.Locate_Directory();
+        }
+
         private void AddListToTreeNode(List<String> ListInput)
         {
             try
@@ -436,6 +442,57 @@ namespace PriceFeedX.FolderStats
             }
 
 
+
+
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+
+
+                // Get the node at the current mouse pointer location.  
+                TreeNode theNode = this.treeView1.GetNodeAt(X_Note_loc, Y_Note_loc);
+
+            // Set a ToolTip only if the mouse pointer is actually paused on a node.  
+
+            try
+            {
+
+                if (theNode != null && theNode.Text.Contains("NSE_"))
+                {
+                    string dir = DumpFolder.Dump_Path + @"\" + theNode.Text.ToString();
+
+                    Directory.Delete(dir,true);
+
+
+
+
+                }
+                else     // Pointer is not over a node so clear the ToolTip.  
+                {
+                    // this.toolTip1.SetToolTip(this.treeView1, "");
+                }
+            }
+            catch {
+            //TODO
+            }
+            finally
+            {
+                X_Note_loc = -2; Y_Note_loc = -2;
+
+                //REFRSH GUI
+                
+                while (this.dataGridView1_direc.Rows.Count > 1)
+                {
+                    this.dataGridView1_direc.Rows.RemoveAt(0);
+                }
+                this.treeView1.Nodes.Clear();
+
+                this.Refresh();
+            }
+
+        
 
 
         }
