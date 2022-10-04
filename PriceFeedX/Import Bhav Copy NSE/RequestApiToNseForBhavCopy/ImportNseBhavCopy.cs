@@ -201,6 +201,11 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             }
                             string outputfolder = f1_Prefix + twodigitdate + month + year + f1_Suffix;
 
+                            if(outputfolder == "cm03OCT2022bhav.csv.zip")
+                            {
+
+                            }
+
                             tempurl += outputfolder;
                             string f1 = String.Empty;
 
