@@ -225,6 +225,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                                 string messg = "Importing Bhav Copy :" + twodigitdate + "/" + month + "/" + year + " | Bhav Copy:" + outputfolder;
                                 Queue_Progress.Enqueue(messg);
 
+
                             }
                             else
                             {
