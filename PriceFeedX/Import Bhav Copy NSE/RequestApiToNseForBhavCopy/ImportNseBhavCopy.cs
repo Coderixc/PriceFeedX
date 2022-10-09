@@ -219,6 +219,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
                             //If bhav copy already preent(downloaded) in Directory , avoid inserting Bhav Copy
 
+
                             if(!File.Exists(Outputwithfolder))
                             {
                                 webClient.DownloadFileAsync(uri_t, Outputwithfolder);
