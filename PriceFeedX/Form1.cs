@@ -188,6 +188,7 @@ namespace PriceFeedX
                 // Fetch Max_date  from Table
                 _user_1.ExecuteReader(query, ref dt);
                 if (dt.Rows.Count == 0)
+
                 {
                     MessageBox.Show($" No Symbol found in Table: {Credential.mTable_Symbol} ");
                 }
