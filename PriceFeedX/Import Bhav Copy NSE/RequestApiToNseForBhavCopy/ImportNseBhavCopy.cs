@@ -201,7 +201,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             }
                             string outputfolder = f1_Prefix + twodigitdate + month + year + f1_Suffix;
 
-                            if(outputfolder == "cm03OCT2022bhav.csv.zip")
+                            if(outputfolder == "cm17OCT2022bhav.csv.zip")
                             {
 
                             }
@@ -222,7 +222,8 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
                             if(!File.Exists(Outputwithfolder))
                             {
-                                webClient.DownloadFileAsync(uri_t, Outputwithfolder);
+                                //webClient.DownloadFileAsync(uri_t, Outputwithfolder);
+                                webClient.DownloadFileTaskAsync(uri_t, Outputwithfolder).Wait();
                                 string messg = "Importing Bhav Copy :" + twodigitdate + "/" + month + "/" + year + " | Bhav Copy:" + outputfolder;
                                 Queue_Progress.Enqueue(messg);
 
