@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.IO;
 using System.Windows.Forms;
+using System.Timers;
 
 using PriceFeedX.Import_Bhav_Copy_NSE;
 using PriceFeedX.Import_Bhav_Copy_NSE.ShowImportStatusToConsole_UserControl;
@@ -206,6 +207,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
 
                             }
 
+
                             tempurl += outputfolder;
                             string f1 = String.Empty;
 
@@ -215,12 +217,18 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             //string url_Direct = @"https://www1.nseindia.com/content/historical/EQUITIES/2022/JUL/cm20JUL2022bhav.csv.zip";
                             Uri uri_t = new Uri(tempurl);
 
+
                             string Outputwithfolder = DumpFolder.m_DatewiseFolder + @"\" + outputfolder;
 
                             //If bhav copy already preent(downloaded) in Directory , avoid inserting Bhav Copy
+                            while (webClient.IsBusy)
+                            {
+                                System.Threading.Thread.Sleep(1000);
+
+                            }
 
 
-                            if(!File.Exists(Outputwithfolder))
+                            if (!File.Exists(Outputwithfolder))
                             {
                                 //webClient.DownloadFileAsync(uri_t, Outputwithfolder);
                                 webClient.DownloadFileTaskAsync(uri_t, Outputwithfolder).Wait();
