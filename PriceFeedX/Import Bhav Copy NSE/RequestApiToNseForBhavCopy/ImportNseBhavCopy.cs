@@ -223,6 +223,7 @@ namespace PriceFeedX.Import_Bhav_Copy_NSE.RequestApiToNseForBhavCopy
                             //If bhav copy already preent(downloaded) in Directory , avoid inserting Bhav Copy
                             while (webClient.IsBusy)
                             {
+
                                 System.Threading.Thread.Sleep(1000);
 
                             }
